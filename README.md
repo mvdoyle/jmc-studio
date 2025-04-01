@@ -1,21 +1,25 @@
-# Modern Website Template
+# JMC Studio Interior Design Website
 
-A clean, responsive website template built with HTML, Tailwind CSS, and vanilla JavaScript.
+A modern, elegant website for JMC Studio, an interior design company. The website is built with HTML, Tailwind CSS, and vanilla JavaScript.
 
 ## Features
 
-- Fully responsive design that works on all device sizes
-- Modern and clean UI with smooth animations
-- Interactive elements including a working contact form
+- Clean, minimalist design with focus on visual content
+- Fully responsive layout for all device sizes
+- Elegant animations and transitions
+- Project portfolio showcase
+- Testimonials section
+- Contact form with validation
+- Instagram feed integration
+- Cookie consent management
 - Smooth scrolling navigation
-- Optimized for performance
 
 ## Technologies Used
 
 - **HTML5** - For structure
 - **Tailwind CSS** - For styling (using CDN)
 - **JavaScript** - For interactivity
-- **Font Awesome** - For icons
+- **Google Fonts** - Cormorant Garamond and Inter
 
 ## Project Structure
 
@@ -25,6 +29,9 @@ A clean, responsive website template built with HTML, Tailwind CSS, and vanilla 
 │   └── styles.css      # Custom CSS styles
 ├── js/
 │   └── main.js         # JavaScript functionality
+├── images/             # Image assets
+│   ├── jmc-logo.png    # Logo in dark color
+│   └── jmc-logo-white.png # Logo in white for footer
 └── README.md           # Project documentation
 ```
 
@@ -33,7 +40,6 @@ A clean, responsive website template built with HTML, Tailwind CSS, and vanilla 
 ### Prerequisites
 
 - Any modern web browser (Chrome, Firefox, Safari, Edge)
-- Basic knowledge of HTML, CSS, and JavaScript
 
 ### Installation
 
@@ -50,15 +56,26 @@ A clean, responsive website template built with HTML, Tailwind CSS, and vanilla 
 
 ### Changing Colors
 
-The site uses Tailwind CSS color classes. You can modify the colors by changing the color utility classes in the HTML.
+The site uses a neutral, elegant color palette with variables defined in the Tailwind config:
+- `cream`: Background color
+- `olive`: Primary text and accent color
+- `sage`: Secondary text color
+- `charcoal`: Dark text color
 
-### Adding New Sections
+### Adding Projects
 
-To add new sections, use the existing sections as templates and add them to the `index.html` file.
+To add new projects to the portfolio section, follow the existing HTML structure in the Projects section. Each project consists of an image, title, and category.
 
-### Modifying the Layout
+### Modifying Content
 
-The layout is built with Tailwind CSS Flexbox and Grid. You can modify the layout by changing the utility classes.
+All content is easily editable in the HTML file. The structure is semantically organized into sections for easy navigation.
+
+## Design Choices
+
+- **Typography**: Cormorant Garamond for headings provides elegance, while Inter for body text ensures readability
+- **Color Palette**: Neutral, sophisticated colors appropriate for interior design
+- **Layout**: Focus on showcasing imagery with generous white space
+- **Animation**: Subtle animations that enhance rather than distract from content
 
 ## Browser Support
 
@@ -71,8 +88,6 @@ The layout is built with Tailwind CSS Flexbox and Grid. You can modify the layou
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## Acknowledgments
+## Additional Resources
 
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Font Awesome](https://fontawesome.com/)
-- [Placeholder.com](https://placeholder.com/) for placeholder images 
+For logo variations or additional assets, see the `images` directory. 
