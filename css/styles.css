@@ -205,6 +205,43 @@ input::placeholder, textarea::placeholder {
   opacity: 1;
 }
 
+/* Mobile-specific modal styles */
+@media (max-width: 768px) {
+  #project-modal {
+    padding: 0;
+  }
+
+  #modal-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-radius: 0;
+  }
+
+  .project-gallery {
+    margin: 0 -1rem;
+  }
+
+  .main-image img {
+    height: 40vh;
+  }
+
+  .project-gallery .thumbnail img {
+    height: 24px;
+  }
+
+  .project-details {
+    padding: 0 1rem;
+  }
+
+  .testimonial {
+    margin: 0 -1rem;
+    padding: 1rem;
+  }
+}
+
 /* Modal animations */
 #modal-container {
   transition: transform 0.3s ease, opacity 0.3s ease;

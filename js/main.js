@@ -143,25 +143,25 @@ function initializeProjectModals() {
             
             // Create modal content HTML
             let modalContent = `
-                <h2 class="text-3xl md:text-4xl font-serif mb-2">${project.title}</h2>
-                <div class="flex flex-wrap text-sage mb-8">
+                <h2 class="text-2xl md:text-3xl font-serif mb-2">${project.title}</h2>
+                <div class="flex flex-wrap text-sage mb-6 md:mb-8 text-sm md:text-base">
                     <span class="mr-4">${project.category}</span>
                     <span class="mr-4">${project.location}</span>
                     <span>${project.year}</span>
                 </div>
                 
                 <!-- Project image gallery -->
-                <div class="mb-8">
+                <div class="mb-6 md:mb-8">
                     <div class="project-gallery">
                         <div class="main-image mb-4">
-                            <img src="${project.images[0].url}" alt="${project.title}" class="w-full h-[50vh] md:h-[60vh] object-cover">
-                            <p class="text-sm text-sage mt-2 italic">${project.images[0].caption}</p>
+                            <img src="${project.images[0].url}" alt="${project.title}" class="w-full h-[40vh] md:h-[50vh] object-cover">
+                            <p class="text-xs md:text-sm text-sage mt-2 italic px-4 md:px-0">${project.images[0].caption}</p>
                         </div>
                         
-                        <div class="grid grid-cols-3 gap-4">
-                            ${project.images.slice(1).map(image => `
+                        <div class="grid grid-cols-4 gap-2 md:gap-4 px-4 md:px-0">
+                            ${project.images.map(image => `
                                 <div class="thumbnail cursor-pointer overflow-hidden">
-                                    <img src="${image.url}" alt="${image.caption}" class="w-full h-32 object-cover transition-transform duration-300 hover:scale-110" data-full="${image.url}" data-caption="${image.caption}">
+                                    <img src="${image.url}" alt="${image.caption}" class="w-full h-16 md:h-32 object-cover transition-transform duration-300 hover:scale-110" data-full="${image.url}" data-caption="${image.caption}">
                                 </div>
                             `).join('')}
                         </div>
@@ -169,47 +169,47 @@ function initializeProjectModals() {
                 </div>
                 
                 <!-- Project details -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8 px-4 md:px-0">
                     <div>
-                        <h3 class="text-xl font-serif mb-2">Client</h3>
-                        <p>${project.client}</p>
+                        <h3 class="text-lg md:text-xl font-serif mb-2">Client</h3>
+                        <p class="text-sm md:text-base">${project.client}</p>
                     </div>
                     <div>
-                        <h3 class="text-xl font-serif mb-2">Scope</h3>
-                        <p>${project.scope}</p>
+                        <h3 class="text-lg md:text-xl font-serif mb-2">Scope</h3>
+                        <p class="text-sm md:text-base">${project.scope}</p>
                     </div>
                     <div>
-                        <h3 class="text-xl font-serif mb-2">Year</h3>
-                        <p>${project.year}</p>
+                        <h3 class="text-lg md:text-xl font-serif mb-2">Year</h3>
+                        <p class="text-sm md:text-base">${project.year}</p>
                     </div>
                 </div>
                 
                 <!-- Project description -->
-                <div class="mb-8">
-                    <h3 class="text-xl font-serif mb-2">About the Project</h3>
-                    <p class="mb-4">${project.description}</p>
+                <div class="mb-6 md:mb-8 px-4 md:px-0">
+                    <h3 class="text-lg md:text-xl font-serif mb-2">About the Project</h3>
+                    <p class="text-sm md:text-base mb-4">${project.description}</p>
                 </div>
                 
                 <!-- Challenge, Approach, Result -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8 px-4 md:px-0">
                     <div>
-                        <h3 class="text-xl font-serif mb-2">Challenge</h3>
-                        <p>${project.challenge}</p>
+                        <h3 class="text-lg md:text-xl font-serif mb-2">Challenge</h3>
+                        <p class="text-sm md:text-base">${project.challenge}</p>
                     </div>
                     <div>
-                        <h3 class="text-xl font-serif mb-2">Approach</h3>
-                        <p>${project.approach}</p>
+                        <h3 class="text-lg md:text-xl font-serif mb-2">Approach</h3>
+                        <p class="text-sm md:text-base">${project.approach}</p>
                     </div>
                     <div>
-                        <h3 class="text-xl font-serif mb-2">Result</h3>
-                        <p>${project.result}</p>
+                        <h3 class="text-lg md:text-xl font-serif mb-2">Result</h3>
+                        <p class="text-sm md:text-base">${project.result}</p>
                     </div>
                 </div>
                 
                 <!-- Testimonial -->
-                <div class="bg-sage bg-opacity-10 p-6 md:p-8 my-8">
-                    <p class="text-xl font-serif italic mb-4">"${project.testimonial.quote}"</p>
-                    <p class="uppercase tracking-widest text-sm">— ${project.testimonial.author}</p>
+                <div class="bg-sage bg-opacity-10 p-4 md:p-8 my-6 md:my-8 mx-4 md:mx-0">
+                    <p class="text-lg md:text-xl font-serif italic mb-4 text-sm md:text-base">"${project.testimonial.quote}"</p>
+                    <p class="uppercase tracking-widest text-xs md:text-sm">— ${project.testimonial.author}</p>
                 </div>
             `;
             
