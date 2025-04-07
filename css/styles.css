@@ -147,6 +147,43 @@ input::placeholder, textarea::placeholder {
   opacity: 1;
 }
 
+/* Mobile project item styles */
+@media (max-width: 768px) {
+  .project-item .relative {
+    position: relative;
+  }
+
+  .project-item .relative::after {
+    content: 'View Project';
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .project-item .relative:hover::after,
+  .project-item .relative:active::after {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .project-item .relative:active {
+    transform: scale(0.98);
+  }
+
+  /* Hide the desktop overlay on mobile */
+  .project-item .relative > div {
+    display: none;
+  }
+}
+
 /* Footer links */
 .footer-link {
   position: relative;
