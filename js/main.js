@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCTA();
     initializeCookieBanner();
     initializeProjectFilters();
+    initializeProjectModals();
 });
 
 // Navigation functionality (smooth scrolling)
@@ -123,6 +124,177 @@ function initializeProjectFilters() {
             });
         });
     }
+}
+
+// Project modal functionality
+function initializeProjectModals() {
+    const projectItems = document.querySelectorAll('.project-item');
+    const projectModal = document.getElementById('project-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+    const projectContent = document.getElementById('project-content');
+    const body = document.body;
+    
+    // Function to open modal with project data
+    function openProjectModal(projectId) {
+        // Check if project data exists
+        if (projectsData && projectsData[projectId]) {
+            const project = projectsData[projectId];
+            const modalContainer = document.getElementById('modal-container');
+            
+            // Create modal content HTML
+            let modalContent = `
+                <h2 class="text-3xl md:text-4xl font-serif mb-2">${project.title}</h2>
+                <div class="flex flex-wrap text-sage mb-8">
+                    <span class="mr-4">${project.category}</span>
+                    <span class="mr-4">${project.location}</span>
+                    <span>${project.year}</span>
+                </div>
+                
+                <!-- Project image gallery -->
+                <div class="mb-8">
+                    <div class="project-gallery">
+                        <div class="main-image mb-4">
+                            <img src="${project.images[0].url}" alt="${project.title}" class="w-full h-[50vh] md:h-[60vh] object-cover">
+                            <p class="text-sm text-sage mt-2 italic">${project.images[0].caption}</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-4">
+                            ${project.images.slice(1).map(image => `
+                                <div class="thumbnail cursor-pointer overflow-hidden">
+                                    <img src="${image.url}" alt="${image.caption}" class="w-full h-32 object-cover transition-transform duration-300 hover:scale-110" data-full="${image.url}" data-caption="${image.caption}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project details -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-serif mb-2">Client</h3>
+                        <p>${project.client}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-serif mb-2">Scope</h3>
+                        <p>${project.scope}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-serif mb-2">Year</h3>
+                        <p>${project.year}</p>
+                    </div>
+                </div>
+                
+                <!-- Project description -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-serif mb-2">About the Project</h3>
+                    <p class="mb-4">${project.description}</p>
+                </div>
+                
+                <!-- Challenge, Approach, Result -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-serif mb-2">Challenge</h3>
+                        <p>${project.challenge}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-serif mb-2">Approach</h3>
+                        <p>${project.approach}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-serif mb-2">Result</h3>
+                        <p>${project.result}</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial -->
+                <div class="bg-sage bg-opacity-10 p-6 md:p-8 my-8">
+                    <p class="text-xl font-serif italic mb-4">"${project.testimonial.quote}"</p>
+                    <p class="uppercase tracking-widest text-sm">— ${project.testimonial.author}</p>
+                </div>
+            `;
+            
+            // Update modal content
+            projectContent.innerHTML = modalContent;
+            
+            // Add event listeners to thumbnails
+            const thumbnails = projectContent.querySelectorAll('.thumbnail img');
+            const mainImage = projectContent.querySelector('.main-image img');
+            const mainImageCaption = projectContent.querySelector('.main-image p');
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const fullSrc = this.getAttribute('data-full');
+                    const caption = this.getAttribute('data-caption');
+                    
+                    // Animate the image change
+                    mainImage.style.opacity = 0;
+                    setTimeout(() => {
+                        mainImage.src = fullSrc;
+                        mainImageCaption.textContent = caption;
+                        mainImage.style.opacity = 1;
+                    }, 300);
+                });
+            });
+            
+            // Show the modal with animation
+            projectModal.classList.remove('hidden');
+            
+            // Trigger reflow to ensure transition works
+            void projectModal.offsetWidth;
+            
+            // Add opacity to fade in the modal background
+            projectModal.classList.add('opacity-100');
+            
+            // Animate the modal container
+            setTimeout(() => {
+                modalContainer.classList.remove('scale-95', 'opacity-0');
+                modalContainer.classList.add('scale-100', 'opacity-100');
+            }, 50);
+            
+            // Prevent body scrolling
+            body.classList.add('overflow-hidden');
+        }
+    }
+    
+    // Add click event to project items
+    projectItems.forEach(item => {
+        const projectImage = item.querySelector('.relative');
+        
+        projectImage.addEventListener('click', function() {
+            const projectId = item.getAttribute('data-project-id');
+            openProjectModal(projectId);
+        });
+    });
+    
+    // Close modal functionality
+    closeModalBtn.addEventListener('click', function() {
+        const modalContainer = document.getElementById('modal-container');
+        
+        // Animate closing
+        projectModal.classList.remove('opacity-100');
+        modalContainer.classList.remove('scale-100', 'opacity-100');
+        modalContainer.classList.add('scale-95', 'opacity-0');
+        
+        // Hide modal after animation completes
+        setTimeout(() => {
+            projectModal.classList.add('hidden');
+            body.classList.remove('overflow-hidden');
+        }, 300);
+    });
+    
+    // Close modal when clicking outside content
+    projectModal.addEventListener('click', function(e) {
+        if (e.target === projectModal) {
+            closeModalBtn.click();
+        }
+    });
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+            closeModalBtn.click();
+        }
+    });
 }
 
 // Contact form handling

@@ -47,7 +47,7 @@
     <header class="bg-cream py-6">
         <nav class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
             <div class="text-center mb-6 md:mb-0">
-                <img src="images/jmc-logo.png" alt="JMC Studio" class="h-20 mx-auto md:mx-0">
+                <img src="images/Full Name Logo Cream and Dark Olive.jpg" alt="JMC Studio" class="h-32 md:h-36 mx-auto md:mx-0">
             </div>
             <ul class="flex space-x-8 uppercase tracking-widest text-sm">
                 <li><a href="#projects" class="hover:text-sage transition-colors duration-300">Projects</a></li>
@@ -80,8 +80,13 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="group animate-on-scroll">
-                    <div class="relative overflow-hidden mb-4">
+                <div class="group animate-on-scroll project-item" 
+                     data-project-id="oakridge" 
+                     data-project-title="Oakridge Residence" 
+                     data-project-category="Residential Design"
+                     data-project-year="2022"
+                     data-project-location="Portland, Oregon">
+                    <div class="relative overflow-hidden mb-4 cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Modern Living Room" class="w-full h-[50vh] object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <span class="text-white uppercase tracking-widest">View Project</span>
@@ -92,8 +97,13 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="group animate-on-scroll">
-                    <div class="relative overflow-hidden mb-4">
+                <div class="group animate-on-scroll project-item" 
+                     data-project-id="willow" 
+                     data-project-title="Willow Restaurant" 
+                     data-project-category="Commercial Design"
+                     data-project-year="2021"
+                     data-project-location="Seattle, Washington">
+                    <div class="relative overflow-hidden mb-4 cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Minimalist Kitchen" class="w-full h-[50vh] object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <span class="text-white uppercase tracking-widest">View Project</span>
@@ -104,8 +114,13 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="group animate-on-scroll">
-                    <div class="relative overflow-hidden mb-4">
+                <div class="group animate-on-scroll project-item" 
+                     data-project-id="lakeside" 
+                     data-project-title="Lakeside Retreat" 
+                     data-project-category="Residential Design"
+                     data-project-year="2023"
+                     data-project-location="Lake Tahoe, California">
+                    <div class="relative overflow-hidden mb-4 cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Elegant Bedroom" class="w-full h-[50vh] object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <span class="text-white uppercase tracking-widest">View Project</span>
@@ -239,12 +254,34 @@
         </div>
     </section>
 
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300 overflow-y-auto">
+        <div class="relative bg-cream max-w-4xl mx-4 my-8 p-6 md:p-10 transition-transform duration-300 transform scale-95 opacity-0" id="modal-container">
+            <button id="close-modal" class="absolute top-4 right-4 text-olive hover:text-sage transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <div id="project-content" class="mt-4">
+                <!-- Project content will be loaded here -->
+                <div class="animate-pulse">
+                    <div class="h-8 bg-olive bg-opacity-10 rounded w-3/4 mb-6"></div>
+                    <div class="h-80 bg-olive bg-opacity-10 rounded mb-6"></div>
+                    <div class="h-4 bg-olive bg-opacity-10 rounded w-full mb-3"></div>
+                    <div class="h-4 bg-olive bg-opacity-10 rounded w-full mb-3"></div>
+                    <div class="h-4 bg-olive bg-opacity-10 rounded w-5/6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer Section -->
     <footer class="bg-olive text-white py-10">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0 text-center md:text-left">
-                    <img src="images/jmc-logo-white.png" alt="JMC Studio" class="h-16 mx-auto md:mx-0 mb-4">
+                    <img src="images/JMC Studio Small Logo Beige and Charcoal.jpg" alt="JMC Studio" class="h-16 mx-auto md:mx-0 mb-4">
                     <p class="text-sm opacity-80">© 2023 JMC Studio. All rights reserved.</p>
                 </div>
                 <div class="flex flex-col space-y-2 text-center md:text-right">
@@ -263,6 +300,7 @@
     </button>
 
     <!-- Custom JavaScript -->
+    <script src="js/projects.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html> 

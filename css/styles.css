@@ -178,4 +178,34 @@ input::placeholder, textarea::placeholder {
 #cookie-banner.show {
   transform: translateY(0);
   opacity: 1;
+}
+
+/* Project modal styles */
+.main-image img {
+  transition: opacity 0.3s ease;
+}
+
+.project-gallery .thumbnail {
+  position: relative;
+}
+
+.project-gallery .thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(90, 90, 74, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-gallery .thumbnail:hover::after {
+  opacity: 1;
+}
+
+/* Modal animations */
+#modal-container {
+  transition: transform 0.3s ease, opacity 0.3s ease;
 } 

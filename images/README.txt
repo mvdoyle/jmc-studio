@@ -1,8 +1,10 @@
 # Logo Files
 
-Place your logo files here:
+The following logo files are available:
 
-1. jmc-logo.png - The main logo in dark color for light backgrounds
-2. jmc-logo-white.png - White version of the logo for dark backgrounds
+1. JMC Studio Small Logo Cream and Dark Olive.jpg - Used in the header (light background)
+2. JMC Studio Small Logo Beige and Charcoal.jpg - Used in the footer (dark background)
+3. Full Name Logo Cream and Dark Olive.jpg - Full name logo variant (light background)
+4. Full Name Logo Beige and Charcoal.jpg - Full name logo variant (dark background)
 
-You should use the logo from the image you provided, which shows "JMC STUDIO" with "INTERIOR DESIGN" text below in an elegant, minimalist font. 
+These logos feature the elegant "JMC STUDIO" text with "INTERIOR DESIGN" below in a sophisticated, minimalist font. 

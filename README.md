@@ -30,8 +30,10 @@ A modern, elegant website for JMC Studio, an interior design company. The websit
 ├── js/
 │   └── main.js         # JavaScript functionality
 ├── images/             # Image assets
-│   ├── jmc-logo.png    # Logo in dark color
-│   └── jmc-logo-white.png # Logo in white for footer
+│   ├── JMC Studio Small Logo Cream and Dark Olive.jpg    # Logo for header
+│   ├── JMC Studio Small Logo Beige and Charcoal.jpg      # Logo for footer
+│   ├── Full Name Logo Cream and Dark Olive.jpg           # Full name logo variant
+│   └── Full Name Logo Beige and Charcoal.jpg             # Full name logo variant
 └── README.md           # Project documentation
 ```
 
