@@ -44,10 +44,10 @@
     </div>
 
     <!-- Header Section -->
-    <header class="bg-cream py-6">
+    <header class="bg-cream py-3 md:py-6">
         <nav class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="text-center mb-6 md:mb-0">
-                <img src="images/Full Name Logo Cream and Dark Olive.jpg" alt="JMC Studio" class="h-32 md:h-36 mx-auto md:mx-0">
+            <div class="text-center mb-3 md:mb-0">
+                <img src="images/Full Name Logo Cream and Dark Olive.jpg" alt="JMC Studio" class="h-20 md:h-36 mx-auto md:mx-0">
             </div>
             <ul class="flex space-x-8 uppercase tracking-widest text-sm">
                 <li><a href="#projects" class="hover:text-sage transition-colors duration-300">Projects</a></li>
@@ -275,6 +275,18 @@
             </div>
         </div>
     </div>
+
+    <!-- Navigation Arrows -->
+    <button id="prev-image" class="fixed left-4 top-1/2 transform -translate-y-1/2 bg-cream text-olive p-2 rounded-full shadow-lg z-50 hidden hover:bg-sage hover:text-white transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
+    <button id="next-image" class="fixed right-4 top-1/2 transform -translate-y-1/2 bg-cream text-olive p-2 rounded-full shadow-lg z-50 hidden hover:bg-sage hover:text-white transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
 
     <!-- Footer Section -->
     <footer class="bg-olive text-white py-10">

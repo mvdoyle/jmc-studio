@@ -134,11 +134,45 @@ function initializeProjectModals() {
     const projectContent = document.getElementById('project-content');
     const body = document.body;
     
+    let currentProject = null;
+    let currentImageIndex = 0;
+    
+    // Function to update image navigation
+    function updateImageNavigation(images) {
+        const prevBtn = projectContent.querySelector('#prev-image');
+        const nextBtn = projectContent.querySelector('#next-image');
+        if (prevBtn && nextBtn) {
+            prevBtn.classList.toggle('hidden', currentImageIndex === 0);
+            nextBtn.classList.toggle('hidden', currentImageIndex === images.length - 1);
+        }
+    }
+    
+    // Function to change image
+    function changeImage(direction, images) {
+        const newIndex = currentImageIndex + direction;
+        if (newIndex >= 0 && newIndex < images.length) {
+            currentImageIndex = newIndex;
+            const mainImage = projectContent.querySelector('.main-image img');
+            const mainImageCaption = projectContent.querySelector('.main-image p');
+            
+            mainImage.style.opacity = 0;
+            setTimeout(() => {
+                mainImage.src = images[currentImageIndex].url;
+                mainImageCaption.textContent = images[currentImageIndex].caption;
+                mainImage.style.opacity = 1;
+            }, 300);
+            
+            updateImageNavigation(images);
+        }
+    }
+    
     // Function to open modal with project data
     function openProjectModal(projectId) {
         // Check if project data exists
         if (projectsData && projectsData[projectId]) {
             const project = projectsData[projectId];
+            currentProject = project;
+            currentImageIndex = 0;
             const modalContainer = document.getElementById('modal-container');
             
             // Create modal content HTML
@@ -152,15 +186,27 @@ function initializeProjectModals() {
                 
                 <!-- Project image gallery -->
                 <div class="mb-6 md:mb-8">
-                    <div class="project-gallery">
+                    <div class="project-gallery relative">
                         <div class="main-image mb-4">
                             <img src="${project.images[0].url}" alt="${project.title}" class="w-full h-[40vh] md:h-[50vh] object-cover">
                             <p class="text-xs md:text-sm text-sage mt-2 italic px-4 md:px-0">${project.images[0].caption}</p>
                         </div>
                         
+                        <!-- Navigation Arrows -->
+                        <button id="prev-image" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-cream text-olive p-2 rounded-full shadow-lg z-10 hover:bg-sage hover:text-white transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button id="next-image" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-cream text-olive p-2 rounded-full shadow-lg z-10 hover:bg-sage hover:text-white transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                        
                         <div class="grid grid-cols-4 gap-2 md:gap-4 px-4 md:px-0">
-                            ${project.images.map(image => `
-                                <div class="thumbnail cursor-pointer overflow-hidden">
+                            ${project.images.map((image, index) => `
+                                <div class="thumbnail cursor-pointer overflow-hidden ${index === 0 ? 'active' : ''}">
                                     <img src="${image.url}" alt="${image.caption}" class="w-full h-16 md:h-32 object-cover transition-transform duration-300 hover:scale-110" data-full="${image.url}" data-caption="${image.caption}">
                                 </div>
                             `).join('')}
@@ -220,9 +266,12 @@ function initializeProjectModals() {
             const thumbnails = projectContent.querySelectorAll('.thumbnail img');
             const mainImage = projectContent.querySelector('.main-image img');
             const mainImageCaption = projectContent.querySelector('.main-image p');
+            const prevImageBtn = projectContent.querySelector('#prev-image');
+            const nextImageBtn = projectContent.querySelector('#next-image');
             
-            thumbnails.forEach(thumbnail => {
+            thumbnails.forEach((thumbnail, index) => {
                 thumbnail.addEventListener('click', function() {
+                    currentImageIndex = index;
                     const fullSrc = this.getAttribute('data-full');
                     const caption = this.getAttribute('data-caption');
                     
@@ -233,7 +282,22 @@ function initializeProjectModals() {
                         mainImageCaption.textContent = caption;
                         mainImage.style.opacity = 1;
                     }, 300);
+                    
+                    // Update active thumbnail
+                    thumbnails.forEach(t => t.parentElement.classList.remove('active'));
+                    this.parentElement.classList.add('active');
+                    
+                    updateImageNavigation(project.images);
                 });
+            });
+            
+            // Add event listeners for navigation buttons
+            prevImageBtn.addEventListener('click', () => {
+                changeImage(-1, project.images);
+            });
+            
+            nextImageBtn.addEventListener('click', () => {
+                changeImage(1, project.images);
             });
             
             // Show the modal with animation
@@ -253,6 +317,9 @@ function initializeProjectModals() {
             
             // Prevent body scrolling
             body.classList.add('overflow-hidden');
+            
+            // Update navigation buttons
+            updateImageNavigation(project.images);
         }
     }
     
@@ -267,7 +334,7 @@ function initializeProjectModals() {
     });
     
     // Close modal functionality
-    closeModalBtn.addEventListener('click', function() {
+    function closeModal() {
         const modalContainer = document.getElementById('modal-container');
         
         // Animate closing
@@ -280,19 +347,21 @@ function initializeProjectModals() {
             projectModal.classList.add('hidden');
             body.classList.remove('overflow-hidden');
         }, 300);
-    });
+    }
+    
+    closeModalBtn.addEventListener('click', closeModal);
     
     // Close modal when clicking outside content
     projectModal.addEventListener('click', function(e) {
         if (e.target === projectModal) {
-            closeModalBtn.click();
+            closeModal();
         }
     });
     
     // Close modal on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
-            closeModalBtn.click();
+            closeModal();
         }
     });
 }
