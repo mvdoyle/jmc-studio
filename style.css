@@ -1,0 +1,28 @@
+/* Mobile navigation enhancements */
+@media (max-width: 767px) {
+    /* Ensure the logo container takes the right amount of space */
+    .mobile-nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    /* Ensure logo is perfectly centered */
+    .logo-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Make hamburger menu smaller but maintain usability */
+    .mobile-menu-button {
+        padding: 8px;
+        z-index: 10;
+    }
+    
+    /* Make sure the logo has appropriate size on mobile */
+    .logo-image {
+        height: 70px;
+    }
+} 

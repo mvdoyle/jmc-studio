@@ -94,6 +94,33 @@
                 display: none !important;
             }
         }
+        
+        /* Enhanced mobile header positioning */
+        @media (max-width: 767px) {
+            .header-container {
+                position: relative;
+            }
+            
+            .logo-container {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 5;
+            }
+            
+            .mobile-menu-btn-container {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                z-index: 10;
+            }
+            
+            .mobile-balance-container {
+                width: 60px; /* Same width as hamburger container */
+            }
+        }
     </style>
 </head>
 <body class="bg-cream font-sans text-olive h-auto overflow-auto">
@@ -103,12 +130,12 @@
     <!-- Header Section -->
     <header class="bg-cream py-3 md:py-6 fixed w-full z-40">
         <nav class="container mx-auto px-6">
-            <div class="flex items-center justify-between relative">
+            <div class="flex items-center justify-between relative header-container">
                 <!-- Hamburger Button (Mobile Only) -->
-                <div class="md:hidden flex items-center h-20">
+                <div class="md:hidden flex items-center mobile-menu-btn-container">
                     <button 
                         class="mobile-menu-button hover:bg-gray-100 active:bg-gray-200 rounded-md transition-colors">
-                        <svg class="w-10 h-10 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-8 h-8 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
@@ -121,8 +148,8 @@
                 </ul>
                 
                 <!-- Center Logo -->
-                <div class="text-center mx-auto w-1/3 flex justify-center">
-                    <a href="../index.html">
+                <div class="text-center logo-container md:mx-auto md:w-1/3 md:static md:transform-none md:flex md:justify-center">
+                    <a href="../index.html" class="flex justify-center">
                         <img src="../images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
                     </a>
                 </div>
@@ -134,7 +161,7 @@
                 </ul>
                 
                 <!-- Empty div for balance (Mobile Only) -->
-                <div class="md:hidden w-6"></div>
+                <div class="md:hidden mobile-balance-container"></div>
             </div>
         </nav>
     </header>
