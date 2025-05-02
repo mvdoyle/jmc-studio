@@ -50,7 +50,30 @@ function initializeIntroAnimation() {
 // Navigation functionality (smooth scrolling)
 function initializeNavigation() {
     const navLinks = document.querySelectorAll('nav a');
+    const header = document.querySelector('header');
     
+    // Header scroll behavior
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+            // Reduce logo size when scrolled
+            const logoImage = header.querySelector('.text-center img');
+            if (logoImage && window.innerWidth >= 768) { // Only on desktop
+                logoImage.style.maxHeight = '70px';
+                logoImage.style.maxWidth = '170px';
+            }
+        } else {
+            header.classList.remove('scrolled');
+            // Restore logo size when at top
+            const logoImage = header.querySelector('.text-center img');
+            if (logoImage && window.innerWidth >= 768) { // Only on desktop
+                logoImage.style.maxHeight = '90px';
+                logoImage.style.maxWidth = '220px';
+            }
+        }
+    });
+    
+    // Smooth scrolling for navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             // Only prevent default for hash links
@@ -64,7 +87,7 @@ function initializeNavigation() {
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Account for header height
+                        top: targetElement.offsetTop - 100, // Account for header height
                         behavior: 'smooth'
                     });
                 }
@@ -72,7 +95,7 @@ function initializeNavigation() {
         });
     });
 
-    // Add mobile navigation toggle
+    // Add mobile navigation toggle if needed in future
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
