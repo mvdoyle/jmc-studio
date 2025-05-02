@@ -52,7 +52,7 @@
     </div>
 
     <!-- Header Section -->
-    <header class="bg-cream py-3 md:py-6">
+    <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
         <nav class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
             <div class="text-center mb-3 md:mb-0">
                 <img src="images/Full Name Logo Cream and Dark Olive.jpg" alt="JMC Studio" class="h-20 md:h-36 mx-auto md:mx-0">
@@ -65,20 +65,38 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="animate-on-scroll order-2 md:order-1">
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-light mb-6 leading-tight">Thoughtful Interior Design</h1>
-                    <p class="text-lg mb-8 font-light leading-relaxed">We create spaces that reflect your personality and enhance your everyday life. Through thoughtful design and attention to detail, we transform houses into homes.</p>
-                    <button id="cta-button" class="uppercase tracking-widest text-sm px-8 py-3 border border-olive hover:bg-olive hover:text-white transition-colors duration-300">Discover Our Work</button>
-                </div>
-                <div class="order-1 md:order-2 animate-on-scroll">
-                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Elegant Interior" class="w-full h-[70vh] object-cover">
-                </div>
+    <!-- Hero Carousel Section -->
+    <section id="hero-carousel" class="w-full h-screen relative overflow-hidden">
+        <!-- Carousel Images will be inserted here via JavaScript -->
+        <div class="carousel-slides w-full h-full">
+            <!-- Images will be dynamically added here -->
+        </div>
+        
+        <!-- Overlay text -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white p-8 max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-light mb-6 leading-tight">Thoughtful Interior Design</h1>
+                <p class="text-lg mb-8 font-light leading-relaxed">We create spaces that reflect your personality and enhance your everyday life. Through thoughtful design and attention to detail, we transform houses into homes.</p>
+                <button id="cta-button" class="uppercase tracking-widest text-sm px-8 py-3 border border-white hover:bg-white hover:text-olive transition-colors duration-300">Discover Our Work</button>
             </div>
         </div>
+        
+        <!-- Navigation Dots -->
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-3">
+            <!-- Dots will be dynamically added here -->
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button id="carousel-prev" class="absolute left-6 top-1/2 transform -translate-y-1/2 bg-cream bg-opacity-70 text-olive p-2 rounded-full shadow-lg hover:bg-sage hover:text-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button id="carousel-next" class="absolute right-6 top-1/2 transform -translate-y-1/2 bg-cream bg-opacity-70 text-olive p-2 rounded-full shadow-lg hover:bg-sage hover:text-white transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
     </section>
 
     <!-- Projects Section -->

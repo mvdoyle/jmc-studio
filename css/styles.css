@@ -60,6 +60,7 @@ html {
 body {
   letter-spacing: 0.5px;
   line-height: 1.6;
+  padding-top: 0;
 }
 
 /* Button animations */
@@ -481,5 +482,99 @@ input::placeholder, textarea::placeholder {
 
     header img {
         height: 3rem;
+    }
+}
+
+/* Hero Carousel Styles */
+#hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 0;
+}
+
+.carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Ensure the content below the carousel starts properly */
+#projects {
+    margin-top: 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Overlay for text readability */
+.carousel-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* Carousel Navigation Dots */
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: #fff;
+    transform: scale(1.2);
+}
+
+/* Additional margin for the first section after hero */
+#projects {
+    padding-top: 6rem;
+}
+
+/* Header adjustments for fixed position */
+header {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(250, 249, 243, 0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Adjust content for fixed header */
+body {
+    padding-top: 0;
+}
+
+@media (max-width: 768px) {
+    .carousel-slide {
+        background-position: center;
     }
 } 

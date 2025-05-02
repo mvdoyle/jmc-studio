@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCookieBanner();
     initializeProjectFilters();
     initializeProjectModals();
+    initializeHeroCarousel();
 });
 
 // Handle intro animation
@@ -552,4 +553,149 @@ window.addEventListener('scroll', function() {
             header.classList.remove('shadow-sm');
         }
     }
-}); 
+});
+
+// Initialize the hero carousel
+function initializeHeroCarousel() {
+    const carousel = document.getElementById('hero-carousel');
+    const slidesContainer = carousel.querySelector('.carousel-slides');
+    const dotsContainer = carousel.querySelector('.absolute.bottom-10');
+    const prevButton = document.getElementById('carousel-prev');
+    const nextButton = document.getElementById('carousel-next');
+    
+    // This will hold our slide elements
+    let slides = [];
+    let dots = [];
+    let currentSlideIndex = 0;
+    let slideInterval;
+    const slideIntervalTime = 4000; // 4 seconds per slide
+    
+    // Get slide images from projects data
+    const carouselImages = [];
+    
+    // Extract images from projects data
+    if (typeof projectsData !== 'undefined') {
+        // Collect all project images
+        for (const projectId in projectsData) {
+            const project = projectsData[projectId];
+            
+            // Take the first image from each project
+            if (project.images && project.images.length > 0) {
+                project.images.forEach(image => {
+                    carouselImages.push({
+                        url: image.url,
+                        title: project.title,
+                        category: project.category
+                    });
+                });
+            }
+        }
+    } else {
+        // Fallback images if projects data is not available
+        carouselImages.push(
+            { url: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Elegant Interior', category: 'Residential Design' },
+            { url: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Modern Living Room', category: 'Residential Design' },
+            { url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Minimalist Kitchen', category: 'Commercial Design' }
+        );
+    }
+    
+    // Create slides from images
+    carouselImages.forEach((image, index) => {
+        // Create slide
+        const slide = document.createElement('div');
+        slide.className = 'carousel-slide';
+        slide.style.backgroundImage = `url('${image.url}')`;
+        
+        // Add to slides container
+        slidesContainer.appendChild(slide);
+        slides.push(slide);
+        
+        // Create navigation dot
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `Slide ${index + 1}`);
+        dot.addEventListener('click', () => goToSlide(index));
+        
+        // Add to dots container
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+    });
+    
+    // Set first slide as active
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+        dots[0].classList.add('active');
+    }
+    
+    // Go to specific slide
+    function goToSlide(index) {
+        // Remove active class from current slides/dots
+        slides[currentSlideIndex].classList.remove('active');
+        dots[currentSlideIndex].classList.remove('active');
+        
+        // Update current index
+        currentSlideIndex = index;
+        
+        // Loop around if needed
+        if (currentSlideIndex < 0) {
+            currentSlideIndex = slides.length - 1;
+        } else if (currentSlideIndex >= slides.length) {
+            currentSlideIndex = 0;
+        }
+        
+        // Add active class to new current slide/dot
+        slides[currentSlideIndex].classList.add('active');
+        dots[currentSlideIndex].classList.add('active');
+        
+        // Reset the interval
+        resetInterval();
+    }
+    
+    // Next slide function
+    function nextSlide() {
+        goToSlide(currentSlideIndex + 1);
+    }
+    
+    // Previous slide function
+    function prevSlide() {
+        goToSlide(currentSlideIndex - 1);
+    }
+    
+    // Reset interval for automatic rotation
+    function resetInterval() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+        
+        slideInterval = setInterval(() => {
+            nextSlide();
+        }, slideIntervalTime);
+    }
+    
+    // Add event listeners for navigation buttons
+    prevButton.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
+    
+    // Start the automatic rotation
+    resetInterval();
+    
+    // Pause rotation on hover
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+    
+    // Resume rotation on mouse leave
+    carousel.addEventListener('mouseleave', () => {
+        resetInterval();
+    });
+    
+    // Update header style on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+} 
