@@ -31,43 +31,82 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/page-transitions.css">
-    <!-- Mobile Menu Styles -->
     <style>
-        /* Mobile Menu Animation and Positioning */
+        /* Mobile Menu Styles */
         #mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            position: absolute;
+            position: fixed;
+            top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            bottom: 0;
+            background-color: #FAF9F3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
         
-        #mobile-menu.hidden {
-            display: none;
+        #mobile-menu.active {
+            opacity: 1;
+            pointer-events: auto;
         }
         
-        #mobile-menu:not(.hidden) {
-            display: block;
-            max-height: 300px;
+        /* Mobile menu links animation */
+        #mobile-menu ul li {
+            transform: translateY(10px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        
+        #mobile-menu.active ul li {
+            transform: translateY(0);
             opacity: 1;
         }
         
+        /* Staggered animation for menu items */
+        #mobile-menu.active ul li:nth-child(1) { transition-delay: 0.1s; }
+        #mobile-menu.active ul li:nth-child(2) { transition-delay: 0.2s; }
+        #mobile-menu.active ul li:nth-child(3) { transition-delay: 0.3s; }
+        #mobile-menu.active ul li:nth-child(4) { transition-delay: 0.4s; }
+        
         /* Hamburger Button Styling */
-        #mobile-menu-button {
+        .mobile-menu-button {
             transition: transform 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 12px;
+            outline: none;
         }
         
-        #mobile-menu-button:hover {
+        .mobile-menu-button:hover {
             transform: scale(1.1);
         }
         
+        /* Hide mobile menu on desktop */
         @media (min-width: 768px) {
-            #mobile-menu, #mobile-menu-button {
+            #mobile-menu, .mobile-menu-button {
                 display: none !important;
+            }
+        }
+        
+        /* Navigation Spacing and Alignment */
+        @media (min-width: 768px) {
+            /* Desktop Navigation Alignment */
+            header ul:first-of-type {
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 2rem;
+            }
+            
+            header ul:last-of-type {
+                display: flex;
+                justify-content: flex-start;
+                padding-left: 2rem;
             }
         }
         
@@ -108,33 +147,34 @@
     </div>
 
     <!-- Header Section -->
-    <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
+    <header class="bg-cream py-3 md:py-6 fixed w-full z-40">
         <nav class="container mx-auto px-6">
             <div class="flex items-center justify-between relative">
                 <!-- Hamburger Button (Mobile Only) -->
                 <div class="md:hidden flex items-center h-20">
-                    <button id="mobile-menu-button" class="focus:outline-none">
-                        <svg class="w-6 h-6 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <button 
+                        class="mobile-menu-button hover:bg-gray-100 active:bg-gray-200 rounded-md transition-colors">
+                        <svg class="w-10 h-10 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
                 </div>
                 
                 <!-- Left Navigation Items (Desktop) -->
-                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1 justify-end">
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm justify-end w-1/3">
                     <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
                     <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Selected Projects</a></li>
                 </ul>
                 
                 <!-- Center Logo -->
-                <div class="text-center mx-auto">
+                <div class="text-center mx-auto w-1/3 flex justify-center">
                     <a href="index.html">
                         <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
                     </a>
                 </div>
                 
                 <!-- Right Navigation Items (Desktop) -->
-                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1">
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm w-1/3">
                     <li><a href="process.html" class="hover:text-sage transition-colors duration-300">Process</a></li>
                     <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
                 </ul>
@@ -142,18 +182,26 @@
                 <!-- Empty div for balance (Mobile Only) -->
                 <div class="md:hidden w-6"></div>
             </div>
-            
-            <!-- Mobile Menu Dropdown (Hidden by default) -->
-            <div id="mobile-menu" class="hidden w-full mt-2 bg-cream shadow-md rounded-md md:hidden p-4 transition-all duration-300">
-                <ul class="flex flex-col space-y-4 uppercase tracking-widest text-sm">
-                    <li><a href="about.html" class="block py-2 hover:text-sage transition-colors duration-300">About</a></li>
-                    <li><a href="projects.html" class="block py-2 hover:text-sage transition-colors duration-300">Projects</a></li>
-                    <li><a href="process.html" class="block py-2 hover:text-sage transition-colors duration-300">Process</a></li>
-                    <li><a href="inquire.html" class="block py-2 hover:text-sage transition-colors duration-300">Inquire</a></li>
-                </ul>
-            </div>
         </nav>
     </header>
+
+    <!-- Mobile Menu (Full Screen Overlay) -->
+    <div id="mobile-menu">
+        <!-- Close button -->
+        <button class="mobile-menu-close hover:bg-gray-100 rounded-md transition-colors" 
+                style="background: none; border: none; cursor: pointer; position: absolute; top: 1.5rem; right: 1.5rem; padding: 8px;">
+            <svg class="w-8 h-8 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    
+        <ul class="flex flex-col space-y-8 uppercase tracking-widest text-center">
+            <li><a href="about.html" class="block py-3 text-xl hover:text-sage transition-colors duration-300">About</a></li>
+            <li><a href="projects.html" class="block py-3 text-xl hover:text-sage transition-colors duration-300">Projects</a></li>
+            <li><a href="process.html" class="block py-3 text-xl hover:text-sage transition-colors duration-300">Process</a></li>
+            <li><a href="inquire.html" class="block py-3 text-xl hover:text-sage transition-colors duration-300">Inquire</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Carousel Section -->
     <section id="hero-carousel" class="w-full h-screen relative overflow-hidden">
@@ -191,204 +239,212 @@
         </svg>
     </button>
 
+    <!-- Super simple navigation fix - no dependencies, completely standalone -->
+    <script>
+        // Mobile Menu
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const menuButton = document.querySelector('.mobile-menu-button');
+            const closeButton = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Open menu
+            if (menuButton) {
+                menuButton.addEventListener('click', function() {
+                    console.log('Menu button clicked');
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            // Close menu
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    console.log('Close button clicked');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+            
+            // Close menu when clicking a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
+        
+        // Wait for page to fully load
+        window.addEventListener('load', function() {
+            console.log('SIMPLE navigation fix running');
+            
+            // First, handle the initial animation on page load
+            const introAnimation = document.getElementById('intro-animation');
+            if (introAnimation) {
+                // Show on initial page load
+                if (sessionStorage.getItem('comeFromPage') !== 'true') {
+                    // Show animation
+                    introAnimation.style.display = 'flex';
+                    introAnimation.style.opacity = '1';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Hide after 2 seconds
+                    setTimeout(function() {
+                        introAnimation.style.opacity = '0';
+                        setTimeout(function() {
+                            // Remove from DOM completely instead of just hiding
+                            introAnimation.parentNode.removeChild(introAnimation);
+                            document.body.style.overflow = 'auto';
+                        }, 800);
+                    }, 2000);
+                } else {
+                    // Coming from another page, hide animation
+                    introAnimation.style.opacity = '0';
+                    // Remove from DOM completely instead of just hiding
+                    introAnimation.parentNode.removeChild(introAnimation);
+                    document.body.style.overflow = 'auto';
+                    sessionStorage.removeItem('comeFromPage');
+                }
+            }
+            
+            // SUPER DIRECT approach for navigation
+            // About links - IMPORTANT: This must work to navigate to the about page
+            var aboutLinks = document.querySelectorAll('a[href="about.html"]');
+            aboutLinks.forEach(function(link) {
+                // Remove any existing event listeners
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+                
+                // Add our navigation handler
+                newLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Navigating to About page');
+                    goToPage('about.html');
+                });
+            });
+            
+            // Projects links
+            var projectLinks = document.querySelectorAll('a[href="projects.html"]');
+            projectLinks.forEach(function(link) {
+                // Remove any existing event listeners
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+                
+                // Add our navigation handler
+                newLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Navigating to Projects page');
+                    goToPage('projects.html');
+                });
+            });
+            
+            // Process links
+            var processLinks = document.querySelectorAll('a[href="process.html"]');
+            processLinks.forEach(function(link) {
+                // Remove any existing event listeners
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+                
+                // Add our navigation handler
+                newLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Navigating to Process page');
+                    goToPage('process.html');
+                });
+            });
+            
+            // Inquire links
+            var inquireLinks = document.querySelectorAll('a[href="inquire.html"]');
+            inquireLinks.forEach(function(link) {
+                // Remove any existing event listeners
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+                
+                // Add our navigation handler
+                newLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Navigating to Inquire page');
+                    goToPage('inquire.html');
+                });
+            });
+            
+            // Home/index links - treat specially since we're already on the home page
+            var homeLinks = document.querySelectorAll('a[href="index.html"], a[href="./index.html"], a[href="/"], a[href="./"], a[href="."]');
+            homeLinks.forEach(function(link) {
+                // Remove any existing event listeners
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+                
+                // Add our navigation handler
+                newLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Refreshing Home page');
+                    // We're already on index, so just refresh
+                    window.location.reload();
+                });
+            });
+            
+            // Simple function to navigate with animation
+            function goToPage(url) {
+                // Set flag for next page
+                sessionStorage.setItem('comeFromPage', 'true');
+                
+                // Close mobile menu if it's open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+                
+                // Create a new animation overlay since the original might have been removed
+                let introAnimation = document.getElementById('intro-animation');
+                
+                // If the animation element doesn't exist, create it
+                if (!introAnimation) {
+                    introAnimation = document.createElement('div');
+                    introAnimation.id = 'intro-animation';
+                    introAnimation.className = 'fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden';
+                    introAnimation.style.transition = 'opacity 0.8s ease-in-out';
+                    
+                    // Create logo container
+                    const logoContainer = document.createElement('div');
+                    logoContainer.className = 'intro-logo-container text-center';
+                    
+                    // Create logo image
+                    const logoImage = document.createElement('img');
+                    logoImage.src = 'images/JMC-olive-no-background.png';
+                    logoImage.alt = 'JMC Studio';
+                    logoImage.className = 'intro-logo-image';
+                    logoImage.style.opacity = '1';
+                    
+                    // Assemble the elements
+                    logoContainer.appendChild(logoImage);
+                    introAnimation.appendChild(logoContainer);
+                    document.body.appendChild(introAnimation);
+                }
+                
+                // Show animation
+                introAnimation.style.display = 'flex';
+                introAnimation.style.opacity = '0';
+                
+                // Force reflow
+                void introAnimation.offsetWidth;
+                
+                // Fade in
+                introAnimation.style.opacity = '1';
+                document.body.style.overflow = 'hidden';
+                
+                // Navigate after delay
+                setTimeout(function() {
+                    window.location.href = url;
+                }, 800);
+            }
+        });
+    </script>
+
     <!-- Custom JavaScript -->
     <script src="js/shared.js"></script>
     <script src="js/main.js"></script>
 </body>
-
-<!-- Super simple navigation fix - no dependencies, completely standalone -->
-<script>
-    // Wait for page to fully load
-    window.addEventListener('load', function() {
-        console.log('SIMPLE navigation fix running');
-        
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function() {
-                // Toggle mobile menu visibility
-                if (mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('hidden');
-                    // Animate in
-                    mobileMenu.style.maxHeight = '300px';
-                    mobileMenu.style.opacity = '1';
-                } else {
-                    // Animate out
-                    mobileMenu.style.maxHeight = '0';
-                    mobileMenu.style.opacity = '0';
-                    setTimeout(function() {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
-                }
-            });
-        }
-        
-        // First, handle the initial animation on page load
-        const introAnimation = document.getElementById('intro-animation');
-        if (introAnimation) {
-            // Show on initial page load
-            if (sessionStorage.getItem('comeFromPage') !== 'true') {
-                // Show animation
-                introAnimation.style.display = 'flex';
-                introAnimation.style.opacity = '1';
-                document.body.style.overflow = 'hidden';
-                
-                // Hide after 2 seconds
-                setTimeout(function() {
-                    introAnimation.style.opacity = '0';
-                    setTimeout(function() {
-                        // Remove from DOM completely instead of just hiding
-                        introAnimation.parentNode.removeChild(introAnimation);
-                        document.body.style.overflow = 'auto';
-                    }, 800);
-                }, 2000);
-            } else {
-                // Coming from another page, hide animation
-                introAnimation.style.opacity = '0';
-                // Remove from DOM completely instead of just hiding
-                introAnimation.parentNode.removeChild(introAnimation);
-                document.body.style.overflow = 'auto';
-                sessionStorage.removeItem('comeFromPage');
-            }
-        }
-        
-        // SUPER DIRECT approach for navigation
-        // About links - IMPORTANT: This must work to navigate to the about page
-        var aboutLinks = document.querySelectorAll('a[href="about.html"]');
-        aboutLinks.forEach(function(link) {
-            // Remove any existing event listeners
-            const newLink = link.cloneNode(true);
-            link.parentNode.replaceChild(newLink, link);
-            
-            // Add our navigation handler
-            newLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Navigating to About page');
-                goToPage('about.html');
-            });
-        });
-        
-        // Projects links
-        var projectLinks = document.querySelectorAll('a[href="projects.html"]');
-        projectLinks.forEach(function(link) {
-            // Remove any existing event listeners
-            const newLink = link.cloneNode(true);
-            link.parentNode.replaceChild(newLink, link);
-            
-            // Add our navigation handler
-            newLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Navigating to Projects page');
-                goToPage('projects.html');
-            });
-        });
-        
-        // Process links
-        var processLinks = document.querySelectorAll('a[href="process.html"]');
-        processLinks.forEach(function(link) {
-            // Remove any existing event listeners
-            const newLink = link.cloneNode(true);
-            link.parentNode.replaceChild(newLink, link);
-            
-            // Add our navigation handler
-            newLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Navigating to Process page');
-                goToPage('process.html');
-            });
-        });
-        
-        // Inquire links
-        var inquireLinks = document.querySelectorAll('a[href="inquire.html"]');
-        inquireLinks.forEach(function(link) {
-            // Remove any existing event listeners
-            const newLink = link.cloneNode(true);
-            link.parentNode.replaceChild(newLink, link);
-            
-            // Add our navigation handler
-            newLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Navigating to Inquire page');
-                goToPage('inquire.html');
-            });
-        });
-        
-        // Home/index links - treat specially since we're already on the home page
-        var homeLinks = document.querySelectorAll('a[href="index.html"], a[href="./index.html"], a[href="/"], a[href="./"], a[href="."]');
-        homeLinks.forEach(function(link) {
-            // Remove any existing event listeners
-            const newLink = link.cloneNode(true);
-            link.parentNode.replaceChild(newLink, link);
-            
-            // Add our navigation handler
-            newLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Refreshing Home page');
-                // We're already on index, so just refresh
-                window.location.reload();
-            });
-        });
-        
-        // Simple function to navigate with animation
-        function goToPage(url) {
-            // Set flag for next page
-            sessionStorage.setItem('comeFromPage', 'true');
-            
-            // Close mobile menu if it's open
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.style.maxHeight = '0';
-                mobileMenu.style.opacity = '0';
-                setTimeout(function() {
-                    mobileMenu.classList.add('hidden');
-                }, 300);
-            }
-            
-            // Create a new animation overlay since the original might have been removed
-            let introAnimation = document.getElementById('intro-animation');
-            
-            // If the animation element doesn't exist, create it
-            if (!introAnimation) {
-                introAnimation = document.createElement('div');
-                introAnimation.id = 'intro-animation';
-                introAnimation.className = 'fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden';
-                introAnimation.style.transition = 'opacity 0.8s ease-in-out';
-                
-                // Create logo container
-                const logoContainer = document.createElement('div');
-                logoContainer.className = 'intro-logo-container text-center';
-                
-                // Create logo image
-                const logoImage = document.createElement('img');
-                logoImage.src = 'images/JMC-olive-no-background.png';
-                logoImage.alt = 'JMC Studio';
-                logoImage.className = 'intro-logo-image';
-                logoImage.style.opacity = '1';
-                
-                // Assemble the elements
-                logoContainer.appendChild(logoImage);
-                introAnimation.appendChild(logoContainer);
-                document.body.appendChild(introAnimation);
-            }
-            
-            // Show animation
-            introAnimation.style.display = 'flex';
-            introAnimation.style.opacity = '0';
-            
-            // Force reflow
-            void introAnimation.offsetWidth;
-            
-            // Fade in
-            introAnimation.style.opacity = '1';
-            document.body.style.overflow = 'hidden';
-            
-            // Navigate after delay
-            setTimeout(function() {
-                window.location.href = url;
-            }, 800);
-        }
-    });
-</script>
 </html> 
