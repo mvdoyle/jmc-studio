@@ -220,8 +220,12 @@
     <!-- Main Content -->
     <main class="pt-32 pb-16">
         <!-- Hero Banner Section -->
-        <section class="w-full h-[60vh] bg-sage bg-opacity-20 flex items-center justify-center mb-16">
-            <div class="container mx-auto px-6 text-center">
+        <section class="w-full h-[60vh] bg-sage bg-opacity-20 flex items-center justify-center mb-16 relative overflow-hidden">
+            <!-- Background image with overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="images/doubleOak_resized/Double_Oak_Lane_1.jpg" alt="Double Oak Lane entryway" class="w-full h-full object-cover opacity-30">
+            </div>
+            <div class="container mx-auto px-6 text-center relative z-10">
                 <h2 class="text-3xl md:text-4xl font-serif font-light text-center italic mb-6">A bespoke, <em class="not-italic">designer-led</em> experience.</h2>
                 <h1 class="text-4xl md:text-6xl font-serif font-light text-center">Our Design Process</h1>
             </div>
@@ -256,8 +260,14 @@
         <section class="container mx-auto px-6 py-20">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <div class="aspect-[4/5] bg-sage bg-opacity-30 mb-6"></div>
-                    <div class="aspect-[4/3] bg-sage bg-opacity-40"></div>
+                    <div class="aspect-[4/5] mb-6 overflow-hidden">
+                        <img src="images/doubleOak_resized/Double_Oak_Lane_2.jpg" alt="Double Oak Lane living room" class="w-full h-full object-cover">
+                        <p class="text-xs text-right italic mt-1 text-olive text-opacity-70">Double Oak Lane Project: Living Room</p>
+                    </div>
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="images/doubleOak_resized/Double_Oak_Lane_3.jpg" alt="Double Oak Lane kitchen" class="w-full h-full object-cover">
+                        <p class="text-xs text-right italic mt-1 text-olive text-opacity-70">Double Oak Lane Project: Kitchen</p>
+                    </div>
                 </div>
                 
                 <div>
@@ -396,6 +406,14 @@
                         </p>
                     </div>
                 </div>
+                
+                <!-- Process Example Image -->
+                <div class="mt-20 max-w-4xl mx-auto">
+                    <div class="aspect-[16/9] overflow-hidden rounded-sm">
+                        <img src="images/doubleOak_resized/Double_Oak_Lane_8.jpg" alt="Double Oak Lane guest bedroom" class="w-full h-full object-cover">
+                        <p class="text-xs text-right italic mt-1 text-olive text-opacity-70">Double Oak Lane Project: Guest Bedroom</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -403,9 +421,15 @@
         <section class="py-24 bg-sage bg-opacity-20">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-3 gap-4">
-                    <div class="aspect-[3/4] bg-olive bg-opacity-10"></div>
-                    <div class="aspect-[3/4] bg-olive bg-opacity-20"></div>
-                    <div class="aspect-[3/4] bg-olive bg-opacity-10"></div>
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="images/doubleOak_resized/Double_Oak_Lane_6.jpg" alt="Double Oak Lane family room" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="images/doubleOak_resized/Double_Oak_Lane_5.jpg" alt="Double Oak Lane master bedroom" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="images/doubleOak_resized/Double_Oak_Lane_4.jpg" alt="Double Oak Lane dining area" class="w-full h-full object-cover">
+                    </div>
                 </div>
             </div>
         </section>
@@ -456,7 +480,9 @@
                 </div>
                 
                 <div>
-                    <div class="aspect-[3/4] bg-sage bg-opacity-30"></div>
+                    <div class="aspect-[3/4] overflow-hidden">
+                        <img src="images/doubleOak_resized/Double_Oak_Lane_7.jpg" alt="Double Oak Lane office space" class="w-full h-full object-cover">
+                    </div>
                 </div>
             </div>
         </section>
@@ -489,6 +515,11 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Project Attribution -->
+        <section class="container mx-auto px-6 py-10 text-center">
+            <p class="text-sm italic text-olive text-opacity-70">Images featured on this page are from our <a href="./projects/doubleOak.html" class="underline hover:text-sage transition-colors">Double Oak Lane Project</a> in Birmingham, Alabama.</p>
         </section>
 
         <!-- Final CTA -->
