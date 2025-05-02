@@ -141,8 +141,8 @@
     </style>
 </head>
 <body class="bg-cream font-sans text-olive">
-    <!-- Intro Animation Overlay -->
-    <div id="intro-animation" class="fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden">
+    <!-- Intro Animation Overlay - Modified to make sure it's removed -->
+    <div id="intro-animation" class="fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden" style="display: none;">
         <div class="intro-logo-container text-center">
             <!-- Using the original JMC olive logo with transparent background -->
             <img src="images/JMC-olive-no-background.png" alt="JMC Studio" class="intro-logo-image" style="opacity: 1;">
@@ -474,7 +474,8 @@
                         </ul>
                         
                         <div class="pt-6">
-                            <a href="inquire.html" class="inline-block px-8 py-3 bg-olive text-white hover:bg-sage transition-colors duration-300">Learn More</a>
+                            <!-- Completely new button that bypasses all animation systems -->
+                            <button id="directContactBtn" class="inline-block px-8 py-3 bg-olive text-white hover:bg-sage transition-colors duration-300">Contact for Consultation</button>
                         </div>
                     </div>
                 </div>
@@ -527,7 +528,7 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-5xl font-serif font-light mb-6">Feel Like <em>Home</em>.</h2>
                 <p class="text-xl mb-12 max-w-2xl mx-auto">Inquire with Jessica to create a classic home, made for you.</p>
-                <a href="inquire.html" class="inline-block px-10 py-4 bg-olive text-white hover:bg-sage transition-colors duration-300 text-lg">Inquire</a>
+                <button id="ctaInquireBtn" class="inline-block px-10 py-4 bg-olive text-white hover:bg-sage transition-colors duration-300 text-lg">Inquire</button>
             </div>
         </section>
     </main>
@@ -546,12 +547,16 @@
     <script src="js/direct-link-fix.js"></script>
     <!-- Fix scrolling issues script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Force enable scrolling
-            setTimeout(function() {
+        // Aggressive scroll fix - runs immediately and periodically
+        (function() {
+            function fixScrolling() {
+                // Force enable scrolling
                 document.documentElement.style.overflow = 'auto';
                 document.body.style.overflow = 'auto';
                 document.body.style.height = 'auto';
+                document.documentElement.style.height = 'auto';
+                document.documentElement.style.position = 'static';
+                document.body.style.position = 'static';
                 
                 // Remove any scroll locks
                 const scrollLockStyles = document.querySelectorAll('style[data-scroll-lock]');
@@ -560,11 +565,68 @@
                 // Force all fixed elements to use proper z-index
                 const fixedElements = document.querySelectorAll('.fixed');
                 fixedElements.forEach(el => {
-                    el.style.zIndex = '50';
+                    if (!el.classList.contains('scroll-top') && el.id !== 'intro-animation' && !el.classList.contains('mobile-menu-button')) {
+                        el.style.zIndex = '50';
+                    }
                 });
                 
-                console.log('Scroll fix applied');
-            }, 3000); // Increased timeout to allow for animation to complete
+                // Remove any invisible overlays that might be blocking clicks
+                const overlays = document.querySelectorAll('div[style*="position: fixed"], div[style*="position:fixed"]');
+                overlays.forEach(overlay => {
+                    if (overlay.id !== 'intro-animation' && overlay.id !== 'mobile-menu' && !overlay.classList.contains('scroll-top')) {
+                        overlay.style.display = 'none';
+                        overlay.style.pointerEvents = 'none';
+                    }
+                });
+            }
+            
+            // Run immediately
+            fixScrolling();
+            
+            // Run on DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', fixScrolling);
+            
+            // Run periodically
+            setInterval(fixScrolling, 1000);
+            
+            // Also run after slight delay to catch any late-loading elements
+            setTimeout(fixScrolling, 1500);
+            setTimeout(fixScrolling, 3000);
+        })();
+    </script>
+    
+    <!-- Fix for Contact for Consultation button -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Direct button handling
+            const directButton = document.getElementById('directContactBtn');
+            if (directButton) {
+                directButton.addEventListener('click', function() {
+                    console.log('Direct button click - navigating to inquire.html');
+                    // Force direct navigation without animation
+                    window.location.replace('inquire.html');
+                });
+            }
+
+            // CTA Button handling
+            const ctaButton = document.getElementById('ctaInquireBtn');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function() {
+                    console.log('CTA button click - navigating to inquire.html');
+                    // Force direct navigation without animation
+                    window.location.replace('inquire.html');
+                });
+            }
+            
+            // Make sure any remaining intro animation is removed
+            setTimeout(function() {
+                const introAnim = document.getElementById('intro-animation');
+                if (introAnim) {
+                    introAnim.style.display = 'none';
+                    introAnim.style.opacity = '0';
+                    introAnim.style.pointerEvents = 'none';
+                }
+            }, 500);
         });
     </script>
 </body>
