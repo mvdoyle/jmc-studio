@@ -1,37 +1,57 @@
 // Project Data for JMC Studio
 const projectsData = {
-    "oakridge": {
-        title: "Oakridge Residence",
+    "doubleOak": {
+        title: "Double Oak Lane",
         category: "Residential Design",
-        year: "2022",
-        location: "Portland, Oregon",
-        client: "The Johnson Family",
+        year: "2023",
+        location: "Birmingham, Alabama",
+        client: "The Miller Family",
         scope: "Full Home Interior Design",
-        description: "This modern family residence in Portland's upscale Oakridge neighborhood combines comfort with contemporary elegance. Working with the clients' appreciation for clean lines and natural materials, we created a space that honors the architectural details of the home while introducing warmth and personality.",
-        challenge: "The clients wanted to maintain the home's historic character while updating it for modern family living.",
-        approach: "We preserved original hardwood floors and moldings while introducing contemporary furniture and lighting. The color palette draws from the surrounding landscape, with rich greens and warm neutrals creating a sense of calm throughout the space.",
-        result: "A harmonious blend of historic charm and modern functionality that perfectly suits the family's lifestyle needs.",
+        description: "This elegant residence in Birmingham's exclusive Double Oak Lane neighborhood blends traditional elements with modern comfort. We worked closely with the homeowners to create sophisticated yet livable spaces that reflect their personal style and accommodate their family's lifestyle.",
+        challenge: "The clients wanted to maintain the home's traditional charm while creating more open, functional spaces for modern family living.",
+        approach: "We preserved architectural details while introducing a neutral palette with natural textures and carefully selected furnishings. Each room was designed to balance elegance with comfort, resulting in spaces that feel both sophisticated and welcoming.",
+        result: "A refined yet comfortable home that honors its traditional architecture while providing all the functionality of modern design for a busy family.",
         images: [
             {
-                url: "https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-                caption: "Living room featuring custom millwork and mid-century inspired furniture"
+                url: "images/doubleOak_resized/Double_Oak_Lane_1.jpg",
+                caption: "Elegant entryway with custom lighting and refined details"
             },
             {
-                url: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-                caption: "Kitchen with marble countertops and custom cabinetry"
+                url: "images/doubleOak_resized/Double_Oak_Lane_2.jpg",
+                caption: "Living room featuring custom millwork and traditional-inspired furniture"
             },
             {
-                url: "https://images.unsplash.com/photo-1540518614846-7eded433c457?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-                caption: "Master bedroom with custom headboard and integrated storage"
+                url: "images/doubleOak_resized/Double_Oak_Lane_3.jpg",
+                caption: "Kitchen with custom cabinetry and natural stone countertops"
             },
             {
-                url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-                caption: "Home office with built-in bookshelves and ergonomic workspace"
+                url: "images/doubleOak_resized/Double_Oak_Lane_4.jpg",
+                caption: "Dining area with statement lighting and comfortable seating"
+            },
+            {
+                url: "images/doubleOak_resized/Double_Oak_Lane_5.jpg",
+                caption: "Master bedroom with luxurious textiles and serene color palette"
+            },
+            {
+                url: "images/doubleOak_resized/Double_Oak_Lane_6.jpg",
+                caption: "Family room designed for comfort and conversation"
+            },
+            {
+                url: "images/doubleOak_resized/Double_Oak_Lane_7.jpg",
+                caption: "Office space combining functionality with refined aesthetics"
+            },
+            {
+                url: "images/doubleOak_resized/Double_Oak_Lane_8.jpg",
+                caption: "Guest bedroom with thoughtful details and welcoming atmosphere"
+            },
+            {
+                url: "images/doubleOak_resized/Double_Oak_Lane_9.jpg",
+                caption: "Bathroom featuring elegant fixtures and calming color palette"
             }
         ],
         testimonial: {
-            quote: "JMC Studio transformed our house into a home. They understood exactly what we needed and created spaces that are both beautiful and functional for our family of four.",
-            author: "Sarah Johnson, Homeowner"
+            quote: "JMC Studio transformed our house into the perfect family home. They understood our desire for elegance without sacrificing comfort, and created spaces that work beautifully for our everyday life and for entertaining.",
+            author: "Rebecca Miller, Homeowner"
         }
     },
     "willow": {
