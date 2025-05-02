@@ -30,49 +30,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css">
-    <style>
-        /* Project-specific styles */
-        .project-gallery-container {
-            position: relative;
-            width: 100%;
-        }
-        
-        .project-navigation {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            gap: 1rem;
-            z-index: 10;
-        }
-        
-        .nav-button {
-            background-color: rgba(250, 249, 243, 0.8);
-            color: #5A5A4A;
-            padding: 0.5rem 1rem;
-            border: none;
-            cursor: pointer;
-            font-size: 0.875rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-button:hover {
-            background-color: #5A5A4A;
-            color: #FAF9F3;
-        }
-        
-        @media (max-width: 768px) {
-            .project-navigation {
-                position: static;
-                justify-content: center;
-                margin-top: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/project-page.css">
 </head>
-<body class="bg-cream font-sans text-olive">
+<body class="bg-cream font-sans text-olive h-auto overflow-auto">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to Content</a>
+
     <!-- Header Section -->
     <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
         <nav class="container mx-auto px-6">
@@ -107,69 +70,37 @@
         </nav>
     </header>
 
-    <!-- Project Title -->
-    <section class="pt-32 pb-8">
-        <div class="container mx-auto px-6">
-            <h1 class="text-3xl md:text-4xl font-serif uppercase tracking-widest mb-2">Oakridge Residence</h1>
-            <div class="flex flex-wrap text-sage mb-6 text-sm md:text-base">
-                <span class="mr-4">Residential Design</span>
-                <span class="mr-4">Portland, Oregon</span>
-                <span>2022</span>
-            </div>
+    <!-- Main Content Area -->
+    <main id="main-content" class="content-area">
+        <!-- Project Title -->
+        <h4 class="project-title text-2xl md:text-3xl font-serif">Oakridge Residence</h4>
+        
+        <!-- Project Images - Simplified to match April Tomlin's layout -->
+        <div>
+            <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Oakridge Residence Living Room" class="project-image w-full h-auto md:h-[600px] object-cover">
+            
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Oakridge Residence Kitchen" class="project-image w-full h-auto md:h-[600px] object-cover">
+            
+            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Oakridge Residence Master Bedroom" class="project-image w-full h-auto md:h-[600px] object-cover">
         </div>
-    </section>
-
-    <!-- Project Gallery -->
-    <section class="pb-24">
-        <div class="container mx-auto">
-            <div class="project-gallery-container">
-                <!-- Main Project Image -->
-                <div class="mb-12">
-                    <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Oakridge Residence Living Room" class="w-full h-auto object-cover">
-                </div>
-                
-                <!-- Additional Project Images -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 px-6">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Oakridge Residence Kitchen" class="w-full h-auto object-cover">
-                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Oakridge Residence Master Bedroom" class="w-full h-auto object-cover">
-                </div>
-                
-                <!-- Project Details -->
-                <div class="px-6 max-w-4xl mx-auto mb-16">
-                    <p class="mb-6 leading-relaxed text-lg">This modern family residence in Portland's upscale Oakridge neighborhood combines comfort with contemporary elegance. Working with the clients' appreciation for clean lines and natural materials, we created a space that honors the architectural details of the home while introducing warmth and personality.</p>
-                    
-                    <p class="mb-6 leading-relaxed">The clients wanted to maintain the home's historic character while updating it for modern family living. We preserved original hardwood floors and moldings while introducing contemporary furniture and lighting. The color palette draws from the surrounding landscape, with rich greens and warm neutrals creating a sense of calm throughout the space.</p>
-                    
-                    <p class="mb-10 leading-relaxed">A harmonious blend of historic charm and modern functionality that perfectly suits the family's lifestyle needs.</p>
-                    
-                    <div class="bg-sage bg-opacity-10 p-6 my-8">
-                        <p class="text-lg font-serif italic mb-4">"JMC Studio transformed our house into a home. They understood exactly what we needed and created spaces that are both beautiful and functional for our family of four."</p>
-                        <p class="uppercase tracking-widest text-sm">— Sarah Johnson, Homeowner</p>
-                    </div>
-                </div>
-                
-                <!-- Project Navigation -->
-                <div class="project-navigation">
-                    <a href="../projects.html" class="nav-button">Back to Projects</a>
-                    <a href="willow.html" class="nav-button">Next Project</a>
-                </div>
-            </div>
+        
+        <!-- Project Navigation - Simple text links like April Tomlin's site -->
+        <div class="project-navigation">
+            <a href="../projects.html" class="nav-button mr-auto">Back to Projects</a>
+            <a href="willow.html" class="nav-button">Next</a>
+            <span class="nav-button font-bold">Willow Restaurant</span>
         </div>
-    </section>
+    </main>
 
-    <!-- Footer Section -->
-    <footer class="bg-olive text-white py-10">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0 text-center md:text-left">
-                    <img src="../images/JMC Studio Small Logo Beige and Charcoal.jpg" alt="JMC Studio" class="h-16 mx-auto md:mx-0 mb-4">
-                    <p class="text-sm opacity-80">© 2023 JMC Studio. All rights reserved.</p>
-                </div>
-                <div class="flex flex-col space-y-2 text-center md:text-right">
-                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Privacy Policy</a>
-                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Terms of Service</a>
-                </div>
+    <!-- Footer Section - Simplified -->
+    <footer class="text-olive py-6 border-t border-olive border-opacity-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <a href="https://instagram.com" class="text-sm uppercase tracking-widest hover:text-sage transition-colors duration-300 mr-3">Instagram</a>
+                <span class="text-sm mx-2">|</span>
+                <a href="https://youtube.com" class="text-sm uppercase tracking-widest hover:text-sage transition-colors duration-300 ml-3">Youtube</a>
             </div>
+            <p class="text-xs italic">All images on this website are copyrighted and may not be used without the express permission of the owner.</p>
         </div>
     </footer>
 

@@ -1,0 +1,79 @@
+/* Project page specific styles */
+.project-navigation {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.project-image {
+    width: 100%;
+    margin-bottom: 2rem;
+    height: auto;
+    object-fit: cover;
+}
+
+.nav-button {
+    color: #5A5A4A;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 0.25rem;
+}
+
+.nav-button:hover {
+    border-bottom-color: #5A5A4A;
+}
+
+/* Skip to content button */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #5A5A4A;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.content-area {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-y: auto;
+}
+
+.project-title {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+/* Make sure the body allows scrolling */
+html, body {
+    height: auto;
+    overflow-y: auto;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .project-title {
+        margin-top: 8rem;
+        font-size: 1.5rem;
+    }
+    
+    .project-navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+} 
