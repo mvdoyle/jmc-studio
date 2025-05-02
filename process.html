@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Process | JMC Studio | Interior Design</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF9F3',
+                        olive: '#5A5A4A',
+                        sage: '#8A8C7A',
+                        charcoal: '#333333'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Fix for scrolling issue -->
+    <style>
+        html, body {
+            height: auto !important;
+            overflow: auto !important;
+            position: relative !important;
+            overflow-x: hidden !important;
+        }
+        body {
+            min-height: 100vh;
+        }
+        .fixed {
+            position: fixed !important;
+        }
+        main {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-cream font-sans text-olive">
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white p-4 shadow-md z-50 hidden">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <p class="mb-4 md:mb-0">This site uses cookies. By clicking "Accept", you agree to the storing of cookies on your device.</p>
+            <div class="space-x-4">
+                <button id="accept-cookies" class="px-4 py-2 bg-olive text-white hover:bg-opacity-90 transition-colors">Accept</button>
+                <button id="deny-cookies" class="px-4 py-2 border border-olive text-olive hover:bg-olive hover:bg-opacity-10 transition-colors">Deny</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
+        <nav class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Left Navigation Items -->
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1 justify-end">
+                    <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Selected Projects</a></li>
+                </ul>
+                
+                <!-- Center Logo -->
+                <div class="text-center mb-3 md:mb-0 md:mx-8">
+                    <a href="index.html">
+                        <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    </a>
+                </div>
+                
+                <!-- Right Navigation Items (Hidden on Mobile) -->
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1">
+                    <li><a href="process.html" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
+                </ul>
+                
+                <!-- Mobile Menu (Shown only on mobile) -->
+                <ul class="flex md:hidden space-x-8 uppercase tracking-widest text-sm mt-3">
+                    <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Projects</a></li>
+                    <li><a href="process.html" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-16">
+        <!-- Hero Banner Section -->
+        <section class="w-full h-[60vh] bg-sage bg-opacity-20 flex items-center justify-center mb-16">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-serif font-light text-center italic mb-6">A bespoke, <em class="not-italic">designer-led</em> experience.</h2>
+                <h1 class="text-4xl md:text-6xl font-serif font-light text-center">Our Design Process</h1>
+            </div>
+        </section>
+
+        <!-- Process Intro Section -->
+        <section class="container mx-auto px-6 py-16">
+            <h2 class="text-4xl md:text-5xl font-serif font-light text-center mb-12">Birmingham Interior Design Services</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg leading-relaxed text-center mb-12">
+                    JMC Studio creates interiors that are gracious and inviting with an understated beauty and ease of living. Work with us to create your personal sanctuary of classic fine living, from concept to furnishings.
+                </p>
+                
+                <p class="text-lg leading-relaxed text-center mb-12">
+                    Operating out of our studio in Birmingham, Alabama, Jessica guides you through every phase of the design process with her informed perspective and sophisticated eye for fine details.
+                </p>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="py-20 bg-olive text-cream">
+            <div class="container mx-auto px-6">
+                <blockquote class="max-w-4xl mx-auto text-center">
+                    <p class="text-2xl md:text-3xl font-serif italic mb-6">"Design is not just what it looks like and feels like. Design is how it works."</p>
+                    <cite class="text-lg">— Jessica Clement</cite>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Full-Service Interior Design -->
+        <section class="container mx-auto px-6 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="aspect-[4/5] bg-sage bg-opacity-30 mb-6"></div>
+                    <div class="aspect-[4/3] bg-sage bg-opacity-40"></div>
+                </div>
+                
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-light mb-12">Full-Service Interior Design</h2>
+                    
+                    <div class="space-y-6">
+                        <p class="text-lg leading-relaxed">
+                            Starting with an initial conversation about scope of work and overall vision, Jessica partners with her clients to attentively lead them through all aspects of the design process. From schematic design to construction, interior selections to ordering, she is with you every step of the way until the final accessory is in its place.
+                        </p>
+                        
+                        <p class="text-lg leading-relaxed">
+                            Jessica's work ethic and business sense intersect creativity head-on. With her industry knowledge and highly organized process that only a seasoned expertise can bring, her clients have come to implicitly trust her with their place they call home. It is this structured process that ensures clients feel valued, their needs understood and expectations exceeded - laying the foundation for lasting relationships built on mutual respect.
+                        </p>
+                        
+                        <p class="text-lg italic">
+                            JMC Studio is currently accepting high-end residential interiors projects throughout Alabama and the Southeast for both private clients and developers.
+                        </p>
+                        
+                        <div class="pt-6">
+                            <a href="inquire.html" class="inline-block px-8 py-3 bg-olive text-white hover:bg-sage transition-colors duration-300">Inquire to Begin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Process Steps -->
+        <section class="py-20 bg-white bg-opacity-70">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-serif font-light text-center mb-20">Our Six-Step Design Process</h2>
+                
+                <!-- Step 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 items-center">
+                    <div class="md:col-span-1">
+                        <div class="aspect-square bg-olive bg-opacity-10 flex items-center justify-center rounded-full w-40 h-40 mx-auto">
+                            <span class="text-5xl font-serif text-olive">01</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-serif font-medium mb-4">Initial Consultation</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            Every project begins with a meaningful conversation. We'll discuss your vision, lifestyle needs, and the scope of your project. This consultation allows us to understand your aesthetic preferences and practical requirements.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            During this initial meeting, we'll walk through your space, discuss your goals, and begin to formulate ideas about how we can transform your environment to better suit your needs and reflect your personal style.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 items-center">
+                    <div class="md:col-span-1 md:order-2">
+                        <div class="aspect-square bg-olive bg-opacity-10 flex items-center justify-center rounded-full w-40 h-40 mx-auto">
+                            <span class="text-5xl font-serif text-olive">02</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 md:order-1">
+                        <h3 class="text-2xl font-serif font-medium mb-4">Project Development</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            Following the initial consultation, we'll create a detailed proposal outlining the scope of work, timeline, and investment. Once approved, we'll measure and photograph your space to begin the design planning process.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            This phase sets the foundation for a successful project by establishing clear parameters and expectations. We'll establish communication protocols and begin assembling the team of professionals needed to bring your vision to life.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 items-center">
+                    <div class="md:col-span-1">
+                        <div class="aspect-square bg-olive bg-opacity-10 flex items-center justify-center rounded-full w-40 h-40 mx-auto">
+                            <span class="text-5xl font-serif text-olive">03</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-serif font-medium mb-4">Design Concept</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            We'll develop a comprehensive design concept including space planning, furniture layouts, material selections, and custom elements. Through thoughtful presentations, we'll guide you through the design vision for your space.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            This creative phase translates your needs and preferences into a cohesive design language. We'll present mood boards, sketches, and material samples to help you visualize the transformation, making adjustments based on your feedback until we've perfected the concept.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 items-center">
+                    <div class="md:col-span-1 md:order-2">
+                        <div class="aspect-square bg-olive bg-opacity-10 flex items-center justify-center rounded-full w-40 h-40 mx-auto">
+                            <span class="text-5xl font-serif text-olive">04</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 md:order-1">
+                        <h3 class="text-2xl font-serif font-medium mb-4">Implementation</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            Once the design is approved, we manage all aspects of procurement and implementation. We coordinate with contractors, workrooms, and vendors to ensure every detail of your project is executed to our exacting standards.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            Our attention to detail shines during this phase as we source materials, place orders, and oversee production of custom pieces. We manage timelines, budgets, and quality control, keeping you informed throughout the process while handling the complexities of bringing your design to life.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 items-center">
+                    <div class="md:col-span-1">
+                        <div class="aspect-square bg-olive bg-opacity-10 flex items-center justify-center rounded-full w-40 h-40 mx-auto">
+                            <span class="text-5xl font-serif text-olive">05</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-serif font-medium mb-4">Installation</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            The culmination of our process is the installation day, where all elements come together beautifully. We oversee every detail, from furniture placement to styling accessories, ensuring your vision is realized to perfection.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            This exciting phase transforms your space in a carefully choreographed process. Our team manages delivery schedules, installation crews, and final placement of each element. We handle the logistics and troubleshooting so you can simply enjoy watching your new space take shape.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 items-center">
+                    <div class="md:col-span-1 md:order-2">
+                        <div class="aspect-square bg-olive bg-opacity-10 flex items-center justify-center rounded-full w-40 h-40 mx-auto">
+                            <span class="text-5xl font-serif text-olive">06</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 md:order-1">
+                        <h3 class="text-2xl font-serif font-medium mb-4">Reveal & Follow-up</h3>
+                        <p class="text-lg leading-relaxed mb-4">
+                            We reveal your transformed space and walk through the details together. Our relationship doesn't end at installation—we follow up to ensure you're completely satisfied with your new environment.
+                        </p>
+                        <p class="text-lg leading-relaxed">
+                            This is the moment when you experience your reimagined space for the first time. We'll walk you through each area, explaining the thoughtful details and providing guidance on care and maintenance. Over the following weeks, we'll check in to address any questions or concerns, ensuring your continued delight with your new space.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Break Section -->
+        <section class="py-24 bg-sage bg-opacity-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="aspect-[3/4] bg-olive bg-opacity-10"></div>
+                    <div class="aspect-[3/4] bg-olive bg-opacity-20"></div>
+                    <div class="aspect-[3/4] bg-olive bg-opacity-10"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Consultation -->
+        <section class="container mx-auto px-6 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-light mb-12">Design Consultation Services</h2>
+                    
+                    <div class="space-y-6">
+                        <p class="text-lg leading-relaxed">
+                            For smaller project needs, you can also receive Jessica's expert guidance through a Design Consultation. This is perfect for those seeking insight on design, furniture layouts, construction insights, or color selections.
+                        </p>
+                        
+                        <p class="text-lg leading-relaxed">
+                            These focused sessions provide professional guidance to help you make confident decisions about your space, whether you're looking to refresh a room or need direction for a DIY project.
+                        </p>
+                        
+                        <h3 class="text-xl font-serif font-medium mt-10 mb-4">What's Included:</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li class="flex items-start">
+                                <span class="text-sage mr-2">•</span>
+                                <span>Professional assessment of your space</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-sage mr-2">•</span>
+                                <span>Guidance on space planning and furniture arrangement</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-sage mr-2">•</span>
+                                <span>Color and material recommendations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-sage mr-2">•</span>
+                                <span>Resource suggestions for furnishings and materials</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-sage mr-2">•</span>
+                                <span>Written summary of recommendations</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="pt-6">
+                            <a href="inquire.html" class="inline-block px-8 py-3 bg-olive text-white hover:bg-sage transition-colors duration-300">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="aspect-[3/4] bg-sage bg-opacity-30"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 bg-white bg-opacity-70">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-serif font-light text-center mb-16">Client Experiences</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-cream p-8 shadow-sm">
+                        <div class="text-olive text-2xl mb-4">"</div>
+                        <p class="text-lg italic mb-6">Jessica's attention to detail and understanding of our lifestyle made the design process so enjoyable. She transformed our house into a home that truly reflects who we are.</p>
+                        <div class="font-medium">— Sarah & Michael, Mountain Brook</div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-cream p-8 shadow-sm">
+                        <div class="text-olive text-2xl mb-4">"</div>
+                        <p class="text-lg italic mb-6">Working with JMC Studio was the best decision we made for our renovation. The process was seamless, and the results exceeded our expectations in every way.</p>
+                        <div class="font-medium">— The Williams Family, Homewood</div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-cream p-8 shadow-sm">
+                        <div class="text-olive text-2xl mb-4">"</div>
+                        <p class="text-lg italic mb-6">Jessica's design expertise and project management skills made our extensive remodel stress-free. Her vision for our space was exactly what we needed but couldn't articulate ourselves.</p>
+                        <div class="font-medium">— Robert & Emma, Vestavia Hills</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-24 bg-sage bg-opacity-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-serif font-light mb-6">Feel Like <em>Home</em>.</h2>
+                <p class="text-xl mb-12 max-w-2xl mx-auto">Inquire with Jessica to create a classic home, made for you.</p>
+                <a href="inquire.html" class="inline-block px-10 py-4 bg-olive text-white hover:bg-sage transition-colors duration-300 text-lg">Inquire</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-olive text-white py-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <img src="images/JMC Studio Small Logo Beige and Charcoal.jpg" alt="JMC Studio" class="h-16 mx-auto md:mx-0 mb-4">
+                    <p class="text-sm opacity-80">© 2023 JMC Studio. All rights reserved.</p>
+                </div>
+                <div class="flex flex-col space-y-2 text-center md:text-right">
+                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Privacy Policy</a>
+                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="fixed bottom-6 right-6 bg-olive text-white p-3 rounded-full shadow-lg hidden hover:bg-sage transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <!-- Custom JavaScript -->
+    <script src="js/process-main.js"></script>
+    <!-- Fix scrolling issues script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force enable scrolling
+            setTimeout(function() {
+                document.documentElement.style.overflow = 'auto';
+                document.body.style.overflow = 'auto';
+                document.body.style.height = 'auto';
+                
+                // Remove any scroll locks
+                const scrollLockStyles = document.querySelectorAll('style[data-scroll-lock]');
+                scrollLockStyles.forEach(style => style.remove());
+                
+                // Force all fixed elements to use proper z-index
+                const fixedElements = document.querySelectorAll('.fixed');
+                fixedElements.forEach(el => {
+                    el.style.zIndex = '50';
+                });
+                
+                console.log('Scroll fix applied');
+            }, 500);
+        });
+    </script>
+</body>
+</html> 
