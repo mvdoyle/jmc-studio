@@ -31,6 +31,61 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/page-transitions.css">
+    <!-- Mobile Menu Styles -->
+    <style>
+        /* Mobile Menu Animation and Positioning */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        #mobile-menu.hidden {
+            display: none;
+        }
+        
+        #mobile-menu:not(.hidden) {
+            display: block;
+            max-height: 300px;
+            opacity: 1;
+        }
+        
+        /* Hamburger Button Styling */
+        #mobile-menu-button {
+            transition: transform 0.3s ease;
+        }
+        
+        #mobile-menu-button:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (min-width: 768px) {
+            #mobile-menu, #mobile-menu-button {
+                display: none !important;
+            }
+        }
+        
+        /* Ensure logo stays centered on mobile */
+        @media (max-width: 767px) {
+            .flex.items-center.justify-between {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .text-center.mx-auto {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body class="bg-cream font-sans text-olive">
     <!-- Intro Animation Overlay -->
@@ -55,32 +110,46 @@
     <!-- Header Section -->
     <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
         <nav class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <!-- Left Navigation Items -->
+            <div class="flex items-center justify-between relative">
+                <!-- Hamburger Button (Mobile Only) -->
+                <div class="md:hidden flex items-center h-20">
+                    <button id="mobile-menu-button" class="focus:outline-none">
+                        <svg class="w-6 h-6 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Left Navigation Items (Desktop) -->
                 <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1 justify-end">
                     <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
                     <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Selected Projects</a></li>
                 </ul>
                 
                 <!-- Center Logo -->
-                <div class="text-center mb-3 md:mb-0 md:mx-8">
+                <div class="text-center mx-auto">
                     <a href="index.html">
                         <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
                     </a>
                 </div>
                 
-                <!-- Right Navigation Items (Hidden on Mobile) -->
+                <!-- Right Navigation Items (Desktop) -->
                 <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1">
                     <li><a href="process.html" class="hover:text-sage transition-colors duration-300">Process</a></li>
                     <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
                 </ul>
                 
-                <!-- Mobile Menu (Shown only on mobile) -->
-                <ul class="flex md:hidden space-x-8 uppercase tracking-widest text-sm mt-3">
-                    <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
-                    <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Projects</a></li>
-                    <li><a href="process.html" class="hover:text-sage transition-colors duration-300">Process</a></li>
-                    <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
+                <!-- Empty div for balance (Mobile Only) -->
+                <div class="md:hidden w-6"></div>
+            </div>
+            
+            <!-- Mobile Menu Dropdown (Hidden by default) -->
+            <div id="mobile-menu" class="hidden w-full mt-2 bg-cream shadow-md rounded-md md:hidden p-4 transition-all duration-300">
+                <ul class="flex flex-col space-y-4 uppercase tracking-widest text-sm">
+                    <li><a href="about.html" class="block py-2 hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="projects.html" class="block py-2 hover:text-sage transition-colors duration-300">Projects</a></li>
+                    <li><a href="process.html" class="block py-2 hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="inquire.html" class="block py-2 hover:text-sage transition-colors duration-300">Inquire</a></li>
                 </ul>
             </div>
         </nav>
@@ -132,6 +201,29 @@
     // Wait for page to fully load
     window.addEventListener('load', function() {
         console.log('SIMPLE navigation fix running');
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                // Toggle mobile menu visibility
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    // Animate in
+                    mobileMenu.style.maxHeight = '300px';
+                    mobileMenu.style.opacity = '1';
+                } else {
+                    // Animate out
+                    mobileMenu.style.maxHeight = '0';
+                    mobileMenu.style.opacity = '0';
+                    setTimeout(function() {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        }
         
         // First, handle the initial animation on page load
         const introAnimation = document.getElementById('intro-animation');
@@ -243,6 +335,16 @@
         function goToPage(url) {
             // Set flag for next page
             sessionStorage.setItem('comeFromPage', 'true');
+            
+            // Close mobile menu if it's open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.style.maxHeight = '0';
+                mobileMenu.style.opacity = '0';
+                setTimeout(function() {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
             
             // Create a new animation overlay since the original might have been removed
             let introAnimation = document.getElementById('intro-animation');
