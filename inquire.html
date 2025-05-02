@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMC Studio | Inquire</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF9F3',
+                        olive: '#5A5A4A',
+                        sage: '#8A8C7A',
+                        charcoal: '#333333'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        html, body {
+            height: auto;
+            min-height: 100%;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+        }
+        
+        /* Add some responsive spacing for small screens */
+        @media (max-width: 768px) {
+            .pt-48 {
+                padding-top: 8rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-sans text-olive">
+    <!-- Header Section -->
+    <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
+        <nav class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Left Navigation Items -->
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1 justify-end">
+                    <li><a href="#about" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Selected Projects</a></li>
+                </ul>
+                
+                <!-- Center Logo -->
+                <div class="text-center mb-3 md:mb-0 md:mx-8">
+                    <a href="index.html">
+                        <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    </a>
+                </div>
+                
+                <!-- Right Navigation Items (Hidden on Mobile) -->
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1">
+                    <li><a href="#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="inquire.html" class="text-sage transition-colors duration-300">Inquire</a></li>
+                </ul>
+                
+                <!-- Mobile Menu (Shown only on mobile) -->
+                <ul class="flex md:hidden space-x-8 uppercase tracking-widest text-sm mt-3">
+                    <li><a href="#about" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Projects</a></li>
+                    <li><a href="#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="inquire.html" class="text-sage transition-colors duration-300">Inquire</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Wrapper for better flex layout -->
+    <div class="content-wrapper">
+        <!-- Inquire Main Section -->
+        <section class="pt-48 pb-24">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h1 class="text-5xl md:text-6xl font-serif mb-6 uppercase tracking-widest text-center">Inquire <span class="italic font-light normal-case">to Begin</span></h1>
+                
+                <p class="text-lg mb-16 text-center max-w-2xl mx-auto">
+                    If you would like to collaborate with JMC Studio on a project, please complete the form below and we will be in touch with you shortly.
+                </p>
+                
+                <!-- Form Container with Subtle Background -->
+                <div class="bg-white bg-opacity-50 rounded-lg shadow-sm p-8 md:p-12 mb-16 border border-sage border-opacity-20">
+                    <!-- Form -->
+                    <form id="inquiry-form" class="space-y-10">
+                        <!-- Contact Information Section -->
+                        <div>
+                            <h3 class="font-serif text-xl mb-6 pb-2 border-b border-sage border-opacity-30">Contact Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                                <div>
+                                    <label for="name" class="block text-olive mb-2 uppercase tracking-wider text-xs">Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-olive mb-2 uppercase tracking-wider text-xs">Email Address</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="phone" class="block text-olive mb-2 uppercase tracking-wider text-xs">Phone Number</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="address" class="block text-olive mb-2 uppercase tracking-wider text-xs">Project Address</label>
+                                    <input type="text" id="address" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Information Section -->
+                        <div>
+                            <h3 class="font-serif text-xl mb-6 pb-2 border-b border-sage border-opacity-30">Project Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                                <div>
+                                    <label for="furnishing-budget" class="block text-olive mb-2 uppercase tracking-wider text-xs">Estimated Budget for Furnishings</label>
+                                    <select id="furnishing-budget" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                        <option value="">Please select</option>
+                                        <option value="25-50k">$25,000 - $50,000</option>
+                                        <option value="50-100k">$50,000 - $100,000</option>
+                                        <option value="100-250k">$100,000 - $250,000</option>
+                                        <option value="250k+">$250,000+</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="build-budget" class="block text-olive mb-2 uppercase tracking-wider text-xs">Estimated Build Budget</label>
+                                    <select id="build-budget" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                        <option value="">Please select</option>
+                                        <option value="50-100k">$50,000 - $100,000</option>
+                                        <option value="100-250k">$100,000 - $250,000</option>
+                                        <option value="250-500k">$250,000 - $500,000</option>
+                                        <option value="500k+">$500,000+</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="square-footage" class="block text-olive mb-2 uppercase tracking-wider text-xs">Approximate Square Footage</label>
+                                    <input type="text" id="square-footage" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                </div>
+                                
+                                <div>
+                                    <label for="start-date" class="block text-olive mb-2 uppercase tracking-wider text-xs">Ideal Start Date</label>
+                                    <input type="text" id="start-date" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Experience & Referral Section -->
+                        <div>
+                            <h3 class="font-serif text-xl mb-6 pb-2 border-b border-sage border-opacity-30">Experience & Referral</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                                <div>
+                                    <label for="worked-with-designer" class="block text-olive mb-2 uppercase tracking-wider text-xs">Have you worked with an interior designer before?</label>
+                                    <select id="worked-with-designer" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                        <option value="">Please select</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="working-with-architect" class="block text-olive mb-2 uppercase tracking-wider text-xs">Are you working with an architect or contractor?</label>
+                                    <select id="working-with-architect" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                        <option value="">Please select</option>
+                                        <option value="architect">Architect</option>
+                                        <option value="contractor">Contractor</option>
+                                        <option value="both">Both</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="md:col-span-2">
+                                    <label for="referral" class="block text-olive mb-2 uppercase tracking-wider text-xs">How did you learn about JMC Studio?</label>
+                                    <input type="text" id="referral" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Scope Section -->
+                        <div>
+                            <h3 class="font-serif text-xl mb-6 pb-2 border-b border-sage border-opacity-30">Project Scope</h3>
+                            <div>
+                                <label for="scope" class="block text-olive mb-2 uppercase tracking-wider text-xs">Please describe your project</label>
+                                <textarea id="scope" rows="5" class="w-full px-4 py-3 border border-olive bg-transparent rounded-sm focus:outline-none focus:border-sage transition-colors duration-300"></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="text-center pt-4">
+                            <button type="submit" class="uppercase tracking-widest text-sm px-14 py-4 border border-olive bg-olive text-white hover:bg-opacity-90 transition-colors duration-300 rounded-sm">Send Inquiry</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Thank You Message (Hidden by default) -->
+                <div id="thank-you" class="hidden bg-white bg-opacity-50 rounded-lg shadow-sm p-12 text-center space-y-6">
+                    <div class="text-sage mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <p class="text-2xl font-serif">Your inquiry has been sent.</p>
+                    <p class="italic text-lg text-sage">Keep an eye on your inbox for our response.</p>
+                    <p class="text-xl font-serif mt-8">Thank you</p>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="mt-24 text-center">
+                    <h2 class="text-2xl font-serif mb-10 uppercase tracking-widest">Contact</h2>
+                    <div class="bg-sage bg-opacity-10 py-8 px-6 inline-block rounded-sm">
+                        <p class="font-serif text-lg mb-2">JMC Studio</p>
+                        <p>123 Design Avenue</p>
+                        <p>New York, NY 10001</p>
+                        <div class="w-16 h-px bg-olive opacity-30 mx-auto my-6"></div>
+                        <p>+1 (212) 555-1234</p>
+                        <p>hello@jmcstudio.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-olive text-white py-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <img src="images/JMC Studio Small Logo Beige and Charcoal.jpg" alt="JMC Studio" class="h-16 mx-auto md:mx-0 mb-4">
+                    <p class="text-sm opacity-80">© 2023 JMC Studio. All rights reserved.</p>
+                </div>
+                <div class="flex flex-col space-y-2 text-center md:text-right">
+                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Privacy Policy</a>
+                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="fixed bottom-6 right-6 bg-olive text-white p-3 rounded-full shadow-lg hidden hover:bg-sage transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Make sure the scroll-to-top button works properly
+        window.addEventListener('scroll', function() {
+            var scrollButton = document.getElementById('scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.remove('hidden');
+            } else {
+                scrollButton.classList.add('hidden');
+            }
+        });
+        
+        document.getElementById('scroll-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    
+        // Simple form submission
+        document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your server
+            // For now, just show the thank you message
+            document.getElementById('inquiry-form').parentElement.classList.add('hidden');
+            document.getElementById('thank-you').classList.remove('hidden');
+            
+            // Scroll to thank you message
+            document.getElementById('thank-you').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html> 
