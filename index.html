@@ -30,13 +30,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-transitions.css">
 </head>
 <body class="bg-cream font-sans text-olive">
     <!-- Intro Animation Overlay -->
     <div id="intro-animation" class="fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden">
         <div class="intro-logo-container text-center">
             <!-- Using the original JMC olive logo with transparent background -->
-            <img src="images/JMC-olive-no-background.png" alt="JMC Studio" class="intro-logo-image">
+            <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="intro-logo-image" style="opacity: 1;">
         </div>
     </div>
 
@@ -63,7 +64,9 @@
                 
                 <!-- Center Logo -->
                 <div class="text-center mb-3 md:mb-0 md:mx-8">
-                    <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    <a href="index.html">
+                        <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    </a>
                 </div>
                 
                 <!-- Right Navigation Items (Hidden on Mobile) -->
@@ -120,6 +123,140 @@
     </button>
 
     <!-- Custom JavaScript -->
+    <script src="js/shared.js"></script>
     <script src="js/main.js"></script>
 </body>
+
+<!-- Super simple navigation fix - no dependencies, completely standalone -->
+<script>
+    // Wait for page to fully load
+    window.addEventListener('load', function() {
+        console.log('SIMPLE navigation fix running');
+        
+        // First, handle the initial animation on page load
+        const introAnimation = document.getElementById('intro-animation');
+        if (introAnimation) {
+            // Show on initial page load
+            if (sessionStorage.getItem('comeFromPage') !== 'true') {
+                // Show animation
+                introAnimation.style.display = 'flex';
+                introAnimation.style.opacity = '1';
+                document.body.style.overflow = 'hidden';
+                
+                // Hide after 2 seconds
+                setTimeout(function() {
+                    introAnimation.style.opacity = '0';
+                    setTimeout(function() {
+                        // Remove from DOM completely instead of just hiding
+                        introAnimation.parentNode.removeChild(introAnimation);
+                        document.body.style.overflow = 'auto';
+                    }, 800);
+                }, 2000);
+            } else {
+                // Coming from another page, hide animation
+                introAnimation.style.opacity = '0';
+                // Remove from DOM completely instead of just hiding
+                introAnimation.parentNode.removeChild(introAnimation);
+                document.body.style.overflow = 'auto';
+                sessionStorage.removeItem('comeFromPage');
+            }
+        }
+        
+        // SUPER DIRECT approach for navigation
+        // About links
+        var aboutLinks = document.querySelectorAll('a[href="about.html"]');
+        aboutLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToPage('about.html');
+            });
+        });
+        
+        // Projects links
+        var projectLinks = document.querySelectorAll('a[href="projects.html"]');
+        projectLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToPage('projects.html');
+            });
+        });
+        
+        // Process links
+        var processLinks = document.querySelectorAll('a[href="process.html"]');
+        processLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToPage('process.html');
+            });
+        });
+        
+        // Inquire links
+        var inquireLinks = document.querySelectorAll('a[href="inquire.html"]');
+        inquireLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToPage('inquire.html');
+            });
+        });
+        
+        // Home/index links - treat specially since we're already on the home page
+        var homeLinks = document.querySelectorAll('a[href="index.html"], a[href="./index.html"], a[href="/"], a[href="./"], a[href="."]');
+        homeLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // We're already on index, so just refresh
+                window.location.reload();
+            });
+        });
+        
+        // Simple function to navigate with animation
+        function goToPage(url) {
+            // Set flag for next page
+            sessionStorage.setItem('comeFromPage', 'true');
+            
+            // Create a new animation overlay since the original might have been removed
+            let introAnimation = document.getElementById('intro-animation');
+            
+            // If the animation element doesn't exist, create it
+            if (!introAnimation) {
+                introAnimation = document.createElement('div');
+                introAnimation.id = 'intro-animation';
+                introAnimation.className = 'fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden';
+                introAnimation.style.transition = 'opacity 0.8s ease-in-out';
+                
+                // Create logo container
+                const logoContainer = document.createElement('div');
+                logoContainer.className = 'intro-logo-container text-center';
+                
+                // Create logo image
+                const logoImage = document.createElement('img');
+                logoImage.src = 'images/jmc-studio-olive-no-background.png';
+                logoImage.alt = 'JMC Studio';
+                logoImage.className = 'intro-logo-image';
+                logoImage.style.opacity = '1';
+                
+                // Assemble the elements
+                logoContainer.appendChild(logoImage);
+                introAnimation.appendChild(logoContainer);
+                document.body.appendChild(introAnimation);
+            }
+            
+            // Show animation
+            introAnimation.style.display = 'flex';
+            introAnimation.style.opacity = '0';
+            
+            // Force reflow
+            void introAnimation.offsetWidth;
+            
+            // Fade in
+            introAnimation.style.opacity = '1';
+            document.body.style.overflow = 'hidden';
+            
+            // Navigate after delay
+            setTimeout(function() {
+                window.location.href = url;
+            }, 800);
+        }
+    });
+</script>
 </html> 

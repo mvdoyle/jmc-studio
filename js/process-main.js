@@ -1,11 +1,7 @@
 // Modified JavaScript file for Process page with scrolling fixes
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Ensure scrolling is enabled immediately
-    document.documentElement.style.overflow = 'auto';
-    document.body.style.overflow = 'auto';
-    
-    // Initialize all the interactive elements
+    // Initialize all the interactive elements (intro animation is now handled by shared.js)
     initializeNavigation();
     initializeAnimations();
     initializeCookieBanner();

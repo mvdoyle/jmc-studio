@@ -1,0 +1,116 @@
+/* Page Transitions CSS for JMC Studio */
+
+/* Intro Animation Overlay */
+#intro-animation {
+    transition: opacity 0.8s ease-in-out;
+    background-color: #FAF9F3; /* Cream/beige color */
+    opacity: 0;
+    z-index: 9999;
+    display: flex !important; /* Ensure it's always displayed when needed */
+}
+
+#intro-animation.visible {
+    opacity: 1;
+}
+
+.intro-logo-container {
+    width: 80%;
+    max-width: 350px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.intro-logo-image {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    animation: pulse 2s ease-in-out infinite;
+    opacity: 1;
+}
+
+/* Animation for page transitions */
+.page-transition #intro-animation {
+    opacity: 1;
+}
+
+/* Page transition animation keyframes */
+@keyframes fadeInAndOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fade-in animation for the logo */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Create a smooth transition effect for page content */
+body {
+    transition: opacity 0.3s ease-out;
+}
+
+body.transitioning {
+    opacity: 0.8;
+}
+
+/* Loading indicator for page transitions */
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 9998;
+}
+
+.loading-indicator.active {
+    display: block;
+}
+
+.loading-indicator .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(90, 90, 74, 0.3);
+    border-radius: 50%;
+    border-top-color: #5A5A4A;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+} 

@@ -30,6 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/page-transitions.css">
     <!-- Fix for scrolling issue -->
     <style>
         html, body {
@@ -51,6 +52,14 @@
     </style>
 </head>
 <body class="bg-cream font-sans text-olive">
+    <!-- Intro Animation Overlay -->
+    <div id="intro-animation" class="fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden">
+        <div class="intro-logo-container text-center">
+            <!-- Using the original JMC olive logo with transparent background -->
+            <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="intro-logo-image" style="opacity: 1;">
+        </div>
+    </div>
+
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white p-4 shadow-md z-50 hidden">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -404,7 +413,10 @@
     </button>
 
     <!-- Custom JavaScript -->
+    <script src="js/shared.js"></script>
     <script src="js/process-main.js"></script>
+    <script src="js/animation-fix.js"></script>
+    <script src="js/direct-link-fix.js"></script>
     <!-- Fix scrolling issues script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -425,7 +437,7 @@
                 });
                 
                 console.log('Scroll fix applied');
-            }, 500);
+            }, 3000); // Increased timeout to allow for animation to complete
         });
     </script>
 </body>
