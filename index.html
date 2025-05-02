@@ -163,11 +163,17 @@
         }
         
         // SUPER DIRECT approach for navigation
-        // About links
+        // About links - IMPORTANT: This must work to navigate to the about page
         var aboutLinks = document.querySelectorAll('a[href="about.html"]');
         aboutLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+            // Remove any existing event listeners
+            const newLink = link.cloneNode(true);
+            link.parentNode.replaceChild(newLink, link);
+            
+            // Add our navigation handler
+            newLink.addEventListener('click', function(e) {
                 e.preventDefault();
+                console.log('Navigating to About page');
                 goToPage('about.html');
             });
         });
@@ -175,8 +181,14 @@
         // Projects links
         var projectLinks = document.querySelectorAll('a[href="projects.html"]');
         projectLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+            // Remove any existing event listeners
+            const newLink = link.cloneNode(true);
+            link.parentNode.replaceChild(newLink, link);
+            
+            // Add our navigation handler
+            newLink.addEventListener('click', function(e) {
                 e.preventDefault();
+                console.log('Navigating to Projects page');
                 goToPage('projects.html');
             });
         });
@@ -184,8 +196,14 @@
         // Process links
         var processLinks = document.querySelectorAll('a[href="process.html"]');
         processLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+            // Remove any existing event listeners
+            const newLink = link.cloneNode(true);
+            link.parentNode.replaceChild(newLink, link);
+            
+            // Add our navigation handler
+            newLink.addEventListener('click', function(e) {
                 e.preventDefault();
+                console.log('Navigating to Process page');
                 goToPage('process.html');
             });
         });
@@ -193,8 +211,14 @@
         // Inquire links
         var inquireLinks = document.querySelectorAll('a[href="inquire.html"]');
         inquireLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+            // Remove any existing event listeners
+            const newLink = link.cloneNode(true);
+            link.parentNode.replaceChild(newLink, link);
+            
+            // Add our navigation handler
+            newLink.addEventListener('click', function(e) {
                 e.preventDefault();
+                console.log('Navigating to Inquire page');
                 goToPage('inquire.html');
             });
         });
@@ -202,8 +226,14 @@
         // Home/index links - treat specially since we're already on the home page
         var homeLinks = document.querySelectorAll('a[href="index.html"], a[href="./index.html"], a[href="/"], a[href="./"], a[href="."]');
         homeLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+            // Remove any existing event listeners
+            const newLink = link.cloneNode(true);
+            link.parentNode.replaceChild(newLink, link);
+            
+            // Add our navigation handler
+            newLink.addEventListener('click', function(e) {
                 e.preventDefault();
+                console.log('Refreshing Home page');
                 // We're already on index, so just refresh
                 window.location.reload();
             });
