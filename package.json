@@ -1,0 +1,12 @@
+{
+  "name": "image-resizer",
+  "version": "1.0.0",
+  "description": "Script to resize images for JMC Studio website",
+  "main": "resize-images.js",
+  "scripts": {
+    "resize": "node resize-images.js"
+  },
+  "dependencies": {
+    "sharp": "^0.32.6"
+  }
+} 

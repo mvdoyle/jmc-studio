@@ -339,34 +339,18 @@ function initializeHeroCarousel() {
     let slideInterval;
     const slideIntervalTime = 4000; // 4 seconds per slide
     
-    // Get slide images from projects data
-    const carouselImages = [];
-    
-    // Extract images from projects data
-    if (typeof projectsData !== 'undefined') {
-        // Collect all project images
-        for (const projectId in projectsData) {
-            const project = projectsData[projectId];
-            
-            // Take the first image from each project
-            if (project.images && project.images.length > 0) {
-                project.images.forEach(image => {
-                    carouselImages.push({
-                        url: image.url,
-                        title: project.title,
-                        category: project.category
-                    });
-                });
-            }
-        }
-    } else {
-        // Fallback images if projects data is not available
-        carouselImages.push(
-            { url: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Elegant Interior', category: 'Residential Design' },
-            { url: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Modern Living Room', category: 'Residential Design' },
-            { url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Minimalist Kitchen', category: 'Commercial Design' }
-        );
-    }
+    // Use Double Oak Lane resized images for the carousel
+    const carouselImages = [
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_1.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_2.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_3.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_4.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_5.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_6.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_7.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_8.jpg', title: 'Double Oak Lane', category: 'Residential Design' },
+        { url: 'images/doubleOak_resized/Double_Oak_Lane_9.jpg', title: 'Double Oak Lane', category: 'Residential Design' }
+    ];
     
     // Preload all images before setting up the carousel
     const preloadImages = () => {
