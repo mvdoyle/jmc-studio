@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakeside Retreat | JMC Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF9F3',
+                        olive: '#5A5A4A',
+                        sage: '#8A8C7A',
+                        charcoal: '#333333'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Project-specific styles */
+        .project-gallery-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .project-navigation {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+        
+        .nav-button {
+            background-color: rgba(250, 249, 243, 0.8);
+            color: #5A5A4A;
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background-color: #5A5A4A;
+            color: #FAF9F3;
+        }
+        
+        @media (max-width: 768px) {
+            .project-navigation {
+                position: static;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-sans text-olive">
+    <!-- Header Section -->
+    <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
+        <nav class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Left Navigation Items -->
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1 justify-end">
+                    <li><a href="../index.html#about" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="../projects.html" class="hover:text-sage transition-colors duration-300">Selected Projects</a></li>
+                </ul>
+                
+                <!-- Center Logo -->
+                <div class="text-center mb-3 md:mb-0 md:mx-8">
+                    <a href="../index.html">
+                        <img src="../images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    </a>
+                </div>
+                
+                <!-- Right Navigation Items (Hidden on Mobile) -->
+                <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1">
+                    <li><a href="../index.html#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="../index.html#contact" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
+                </ul>
+                
+                <!-- Mobile Menu (Shown only on mobile) -->
+                <ul class="flex md:hidden space-x-8 uppercase tracking-widest text-sm mt-3">
+                    <li><a href="../index.html#about" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="../projects.html" class="hover:text-sage transition-colors duration-300">Projects</a></li>
+                    <li><a href="../index.html#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="../index.html#contact" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Project Title -->
+    <section class="pt-32 pb-8">
+        <div class="container mx-auto px-6">
+            <h1 class="text-3xl md:text-4xl font-serif uppercase tracking-widest mb-2">Lakeside Retreat</h1>
+            <div class="flex flex-wrap text-sage mb-6 text-sm md:text-base">
+                <span class="mr-4">Residential Design</span>
+                <span class="mr-4">Lake Tahoe, California</span>
+                <span>2023</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="pb-24">
+        <div class="container mx-auto">
+            <div class="project-gallery-container">
+                <!-- Main Project Image -->
+                <div class="mb-12">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Lakeside Retreat Master Bedroom" class="w-full h-auto object-cover">
+                </div>
+                
+                <!-- Additional Project Images -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 px-6">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Lakeside Retreat Great Room" class="w-full h-auto object-cover">
+                    <img src="https://images.unsplash.com/photo-1564078516393-cf04bd966897?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Lakeside Retreat Outdoor Living" class="w-full h-auto object-cover">
+                </div>
+                
+                <!-- Project Details -->
+                <div class="px-6 max-w-4xl mx-auto mb-16">
+                    <p class="mb-6 leading-relaxed text-lg">This lakeside vacation home balances luxury with rustic charm, creating a peaceful retreat for a family from San Francisco. Natural materials and a neutral palette let the stunning lake views take center stage while providing a comfortable and elegant space for relaxation and entertaining.</p>
+                    
+                    <p class="mb-6 leading-relaxed">Creating a design that would work for both intimate family gatherings and larger entertaining events, while maintaining a cohesive connection to the natural surroundings was our main focus. We focused on versatile, comfortable furnishings arranged in conversational groupings, with materials that reference the surrounding nature. Large windows were left unobstructed to maximize views, while custom lighting creates ambiance for evening gatherings.</p>
+                    
+                    <p class="mb-10 leading-relaxed">The result is a sophisticated yet comfortable retreat that the family uses year-round, with spaces that transition seamlessly from summer lake activities to cozy winter gatherings.</p>
+                    
+                    <div class="bg-sage bg-opacity-10 p-6 my-8">
+                        <p class="text-lg font-serif italic mb-4">"JMC Studio created our dream lake house. Every detail is thoughtfully considered, and the space works perfectly for both quiet weekends and hosting friends and family. It truly feels like a sanctuary."</p>
+                        <p class="uppercase tracking-widest text-sm">— Michael & Lauren Thompson, Homeowners</p>
+                    </div>
+                </div>
+                
+                <!-- Project Navigation -->
+                <div class="project-navigation">
+                    <a href="willow.html" class="nav-button">Previous Project</a>
+                    <a href="../projects.html" class="nav-button">Back to Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-olive text-white py-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <img src="../images/JMC Studio Small Logo Beige and Charcoal.jpg" alt="JMC Studio" class="h-16 mx-auto md:mx-0 mb-4">
+                    <p class="text-sm opacity-80">© 2023 JMC Studio. All rights reserved.</p>
+                </div>
+                <div class="flex flex-col space-y-2 text-center md:text-right">
+                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Privacy Policy</a>
+                    <a href="#" class="text-sm opacity-80 hover:opacity-100 transition-opacity duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 
