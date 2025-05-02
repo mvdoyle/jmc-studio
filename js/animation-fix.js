@@ -136,6 +136,7 @@ function navigateWithAnimation(targetPage) {
     // Make sure logo is visible
     const logoImage = introAnimation.querySelector('.intro-logo-image');
     if (logoImage) {
+        logoImage.src = 'images/JMC-olive-no-background.png'; // Ensure correct image is used
         logoImage.style.opacity = '1';
         logoImage.style.visibility = 'visible';
     }
