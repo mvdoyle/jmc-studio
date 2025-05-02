@@ -443,19 +443,29 @@ function initializeContactForm() {
 // CTA button functionality
 function initializeCTA() {
     const ctaButton = document.getElementById('cta-button');
+    const projectsLinks = document.querySelectorAll('a[href="#projects"]');
     
+    // Function to scroll to projects section
+    const scrollToProjects = function(e) {
+        if (e) e.preventDefault();
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection) {
+            window.scrollTo({
+                top: projectsSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    };
+    
+    // Add event listener to CTA button if it exists
     if (ctaButton) {
-        ctaButton.addEventListener('click', function() {
-            // Scroll to projects section
-            const projectsSection = document.getElementById('projects');
-            if (projectsSection) {
-                window.scrollTo({
-                    top: projectsSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
+        ctaButton.addEventListener('click', scrollToProjects);
     }
+    
+    // Add event listeners to any links pointing to the projects section
+    projectsLinks.forEach(link => {
+        link.addEventListener('click', scrollToProjects);
+    });
 }
 
 // Cookie banner functionality
@@ -560,8 +570,6 @@ function initializeHeroCarousel() {
     const carousel = document.getElementById('hero-carousel');
     const slidesContainer = carousel.querySelector('.carousel-slides');
     const dotsContainer = carousel.querySelector('.absolute.bottom-10');
-    const prevButton = document.getElementById('carousel-prev');
-    const nextButton = document.getElementById('carousel-next');
     
     // This will hold our slide elements
     let slides = [];
@@ -599,41 +607,56 @@ function initializeHeroCarousel() {
         );
     }
     
-    // Create slides from images
-    carouselImages.forEach((image, index) => {
-        // Create slide
-        const slide = document.createElement('div');
-        slide.className = 'carousel-slide';
-        slide.style.backgroundImage = `url('${image.url}')`;
-        
-        // Add to slides container
-        slidesContainer.appendChild(slide);
-        slides.push(slide);
-        
-        // Create navigation dot
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot';
-        dot.setAttribute('aria-label', `Slide ${index + 1}`);
-        dot.addEventListener('click', () => goToSlide(index));
-        
-        // Add to dots container
-        dotsContainer.appendChild(dot);
-        dots.push(dot);
-    });
+    // Preload all images before setting up the carousel
+    const preloadImages = () => {
+        return Promise.all(carouselImages.map(image => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => resolve(image);
+                img.onerror = () => resolve(image); // Continue even if an image fails to load
+                img.src = image.url;
+            });
+        }));
+    };
     
-    // Set first slide as active
-    if (slides.length > 0) {
-        slides[0].classList.add('active');
-        dots[0].classList.add('active');
-    }
+    // Setup carousel after preloading images
+    preloadImages().then(() => {
+        // Create slides from images
+        carouselImages.forEach((image, index) => {
+            // Create slide
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            slide.style.backgroundImage = `url('${image.url}')`;
+            
+            // Add to slides container
+            slidesContainer.appendChild(slide);
+            slides.push(slide);
+            
+            // Create navigation dot
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            dot.setAttribute('aria-label', `Slide ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            
+            // Add to dots container
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+        });
+        
+        // Set first slide as active immediately
+        if (slides.length > 0) {
+            slides[0].classList.add('active');
+            dots[0].classList.add('active');
+        }
+        
+        // Start the automatic rotation
+        resetInterval();
+    });
     
     // Go to specific slide
     function goToSlide(index) {
-        // Remove active class from current slides/dots
-        slides[currentSlideIndex].classList.remove('active');
-        dots[currentSlideIndex].classList.remove('active');
-        
         // Update current index
+        const previousIndex = currentSlideIndex;
         currentSlideIndex = index;
         
         // Loop around if needed
@@ -643,9 +666,19 @@ function initializeHeroCarousel() {
             currentSlideIndex = 0;
         }
         
-        // Add active class to new current slide/dot
-        slides[currentSlideIndex].classList.add('active');
-        dots[currentSlideIndex].classList.add('active');
+        // Handle the transition
+        if (slides.length > 0) {
+            // First remove active class from all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Force browser reflow to ensure clean animation
+            void slides[currentSlideIndex].offsetWidth;
+            
+            // Add active class to new current slide/dot
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
         
         // Reset the interval
         resetInterval();
@@ -654,11 +687,6 @@ function initializeHeroCarousel() {
     // Next slide function
     function nextSlide() {
         goToSlide(currentSlideIndex + 1);
-    }
-    
-    // Previous slide function
-    function prevSlide() {
-        goToSlide(currentSlideIndex - 1);
     }
     
     // Reset interval for automatic rotation
@@ -671,13 +699,6 @@ function initializeHeroCarousel() {
             nextSlide();
         }, slideIntervalTime);
     }
-    
-    // Add event listeners for navigation buttons
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
-    
-    // Start the automatic rotation
-    resetInterval();
     
     // Pause rotation on hover
     carousel.addEventListener('mouseenter', () => {
