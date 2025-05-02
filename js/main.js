@@ -1,6 +1,9 @@
 // Main JavaScript file for JMC Studio
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize intro animation first
+    initializeIntroAnimation();
+
     // Initialize all the interactive elements
     initializeNavigation();
     initializeAnimations();
@@ -10,6 +13,38 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeProjectFilters();
     initializeProjectModals();
 });
+
+// Handle intro animation
+function initializeIntroAnimation() {
+    const introAnimation = document.getElementById('intro-animation');
+    const bodyElement = document.body;
+    
+    // Temporarily prevent scrolling during intro
+    bodyElement.style.overflow = 'hidden';
+    
+    // Ensure animation runs immediately on page load
+    introAnimation.style.display = 'flex';
+    
+    // Fade out the intro animation after 2.5 seconds
+    setTimeout(() => {
+        introAnimation.style.opacity = '0';
+        
+        // After animation completes, hide the element and restore scrolling
+        setTimeout(() => {
+            introAnimation.style.display = 'none';
+            bodyElement.style.overflow = '';
+            
+            // Trigger scroll animations that might be in initial viewport
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    element.classList.add('fade-in');
+                }
+            });
+        }, 800); // This matches the transition duration
+    }, 2500); // Total intro animation time
+}
 
 // Navigation functionality (smooth scrolling)
 function initializeNavigation() {
