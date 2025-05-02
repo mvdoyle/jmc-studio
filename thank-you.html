@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JMC Studio | Interior Design</title>
+    <title>Thank You | JMC Studio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -30,71 +30,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        html, body {
+            height: auto;
+            min-height: 100%;
+            overflow-y: auto;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+        }
+    </style>
 </head>
 <body class="bg-cream font-sans text-olive">
-    <!-- Intro Animation Overlay -->
-    <div id="intro-animation" class="fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden">
-        <div class="intro-logo-container text-center">
-            <!-- Using the original JMC olive logo with transparent background -->
-            <img src="images/JMC-olive-no-background.png" alt="JMC Studio" class="intro-logo-image">
-        </div>
-    </div>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white p-4 shadow-md z-50 hidden">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <p class="mb-4 md:mb-0">This site uses cookies. By clicking "Accept", you agree to the storing of cookies on your device.</p>
-            <div class="space-x-4">
-                <button id="accept-cookies" class="px-4 py-2 bg-olive text-white hover:bg-opacity-90 transition-colors">Accept</button>
-                <button id="deny-cookies" class="px-4 py-2 border border-olive text-olive hover:bg-olive hover:bg-opacity-10 transition-colors">Deny</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Header Section -->
     <header class="bg-cream py-3 md:py-6 fixed w-full z-50">
         <nav class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <!-- Left Navigation Items -->
                 <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1 justify-end">
-                    <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="#about" class="hover:text-sage transition-colors duration-300">About</a></li>
                     <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Selected Projects</a></li>
                 </ul>
                 
                 <!-- Center Logo -->
                 <div class="text-center mb-3 md:mb-0 md:mx-8">
-                    <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    <a href="index.html">
+                        <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    </a>
                 </div>
                 
                 <!-- Right Navigation Items (Hidden on Mobile) -->
                 <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1">
                     <li><a href="#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
-                    <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
+                    <li><a href="inquire.html" class="text-sage transition-colors duration-300">Inquire</a></li>
                 </ul>
                 
                 <!-- Mobile Menu (Shown only on mobile) -->
                 <ul class="flex md:hidden space-x-8 uppercase tracking-widest text-sm mt-3">
-                    <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
+                    <li><a href="#about" class="hover:text-sage transition-colors duration-300">About</a></li>
                     <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Projects</a></li>
                     <li><a href="#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
-                    <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
+                    <li><a href="inquire.html" class="text-sage transition-colors duration-300">Inquire</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Carousel Section -->
-    <section id="hero-carousel" class="w-full h-screen relative overflow-hidden">
-        <!-- Carousel Images will be inserted here via JavaScript -->
-        <div class="carousel-slides w-full h-full">
-            <!-- Images will be dynamically added here -->
-        </div>
-        
-        <!-- Navigation Dots -->
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-3">
-            <!-- Dots will be dynamically added here -->
-        </div>
-    </section>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper flex items-center justify-center">
+        <!-- Thank You Section -->
+        <section class="min-h-screen flex items-center py-24">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="bg-white bg-opacity-50 rounded-lg shadow-sm p-12 md:p-16 text-center">
+                    <div class="text-sage mb-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl font-serif mb-6">Thank You</h1>
+                    
+                    <p class="text-xl mb-8">Your inquiry has been submitted successfully.</p>
+                    
+                    <p class="text-lg mb-12 text-sage italic">We've received your message and will be in touch with you shortly.</p>
+                    
+                    <div class="mt-12">
+                        <a href="index.html" class="uppercase tracking-widest text-sm px-12 py-4 border border-olive hover:bg-olive hover:text-white transition-colors duration-300 rounded-sm">Return Home</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer Section -->
     <footer class="bg-olive text-white py-10">
@@ -111,15 +123,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Scroll to Top Button -->
-    <button id="scroll-top" class="fixed bottom-6 right-6 bg-olive text-white p-3 rounded-full shadow-lg hidden hover:bg-sage transition-colors duration-300">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-        </svg>
-    </button>
-
-    <!-- Custom JavaScript -->
-    <script src="js/main.js"></script>
 </body>
 </html> 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JMC Studio | Interior Design</title>
+    <title>About | JMC Studio | Interior Design</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -32,14 +32,6 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-cream font-sans text-olive">
-    <!-- Intro Animation Overlay -->
-    <div id="intro-animation" class="fixed inset-0 bg-cream flex items-center justify-center z-[9999] overflow-hidden">
-        <div class="intro-logo-container text-center">
-            <!-- Using the original JMC olive logo with transparent background -->
-            <img src="images/JMC-olive-no-background.png" alt="JMC Studio" class="intro-logo-image">
-        </div>
-    </div>
-
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-white p-4 shadow-md z-50 hidden">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -63,12 +55,14 @@
                 
                 <!-- Center Logo -->
                 <div class="text-center mb-3 md:mb-0 md:mx-8">
-                    <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    <a href="index.html">
+                        <img src="images/jmc-studio-olive-no-background.png" alt="JMC Studio" class="h-20 md:h-28 mx-auto">
+                    </a>
                 </div>
                 
                 <!-- Right Navigation Items (Hidden on Mobile) -->
                 <ul class="hidden md:flex space-x-8 uppercase tracking-widest text-sm flex-1">
-                    <li><a href="#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="index.html#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
                     <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
                 </ul>
                 
@@ -76,25 +70,50 @@
                 <ul class="flex md:hidden space-x-8 uppercase tracking-widest text-sm mt-3">
                     <li><a href="about.html" class="hover:text-sage transition-colors duration-300">About</a></li>
                     <li><a href="projects.html" class="hover:text-sage transition-colors duration-300">Projects</a></li>
-                    <li><a href="#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
+                    <li><a href="index.html#process" class="hover:text-sage transition-colors duration-300">Process</a></li>
                     <li><a href="inquire.html" class="hover:text-sage transition-colors duration-300">Inquire</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Carousel Section -->
-    <section id="hero-carousel" class="w-full h-screen relative overflow-hidden">
-        <!-- Carousel Images will be inserted here via JavaScript -->
-        <div class="carousel-slides w-full h-full">
-            <!-- Images will be dynamically added here -->
-        </div>
-        
-        <!-- Navigation Dots -->
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-3">
-            <!-- Dots will be dynamically added here -->
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main class="pt-32 pb-16">
+        <!-- About Section -->
+        <section class="container mx-auto px-6 py-12">
+            <h1 class="text-4xl md:text-5xl font-serif font-light text-center mb-16">Jessica Clement</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Image Column -->
+                <div class="order-2 md:order-1">
+                    <img src="images/jessica-about.avif" alt="Jessica - Interior Designer" class="w-full h-auto shadow-lg">
+                </div>
+                
+                <!-- Text Column -->
+                <div class="order-1 md:order-2 space-y-8">
+                    <p class="text-lg leading-relaxed">
+                        A home should tell the story of the people who live within it.
+                    </p>
+                    
+                    <p class="text-lg leading-relaxed">
+                        My role as a designer is to capture who my client is and create a well-designed interior that encompasses their character. I take pride in tailoring each project to the client's specific needs and creating a beautifully designed and functional space.
+                    </p>
+                    
+                    <p class="text-lg leading-relaxed">
+                        JMC Studio is a full-service residential interior design studio that is located in Birmingham, AL. Whether, the project is a large-scale remodel or a makeover, JMC Studio will design a space that will reflect the client's style.
+                    </p>
+                    
+                    <p class="text-lg leading-relaxed">
+                        Contact me to schedule a consultation.
+                    </p>
+                    
+                    <div class="pt-4">
+                        <a href="inquire.html" class="inline-block px-8 py-3 bg-olive text-white hover:bg-sage transition-colors duration-300">Schedule a Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer Section -->
     <footer class="bg-olive text-white py-10">

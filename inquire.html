@@ -103,30 +103,30 @@
                 
                 <!-- Form Container with Subtle Background -->
                 <div class="bg-white bg-opacity-50 rounded-lg shadow-sm p-8 md:p-12 mb-16 border border-sage border-opacity-20">
-                    <!-- Form -->
-                    <form id="inquiry-form" class="space-y-10">
+                    <!-- Form with Formspree integration -->
+                    <form id="inquiry-form" action="https://formspree.io/f/jmcstudiodesign@gmail.com" method="POST" class="space-y-10">
                         <!-- Contact Information Section -->
                         <div>
                             <h3 class="font-serif text-xl mb-6 pb-2 border-b border-sage border-opacity-30">Contact Information</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                                 <div>
                                     <label for="name" class="block text-olive mb-2 uppercase tracking-wider text-xs">Name</label>
-                                    <input type="text" id="name" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
                                 </div>
                                 
                                 <div>
                                     <label for="email" class="block text-olive mb-2 uppercase tracking-wider text-xs">Email Address</label>
-                                    <input type="email" id="email" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
                                 </div>
                                 
                                 <div>
                                     <label for="phone" class="block text-olive mb-2 uppercase tracking-wider text-xs">Phone Number</label>
-                                    <input type="tel" id="phone" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
+                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300" required>
                                 </div>
                                 
                                 <div>
                                     <label for="address" class="block text-olive mb-2 uppercase tracking-wider text-xs">Project Address</label>
-                                    <input type="text" id="address" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                    <input type="text" id="address" name="project_address" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                 </div>
                             </div>
                         </div>
@@ -137,34 +137,22 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                                 <div>
                                     <label for="furnishing-budget" class="block text-olive mb-2 uppercase tracking-wider text-xs">Estimated Budget for Furnishings</label>
-                                    <select id="furnishing-budget" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
-                                        <option value="">Please select</option>
-                                        <option value="25-50k">$25,000 - $50,000</option>
-                                        <option value="50-100k">$50,000 - $100,000</option>
-                                        <option value="100-250k">$100,000 - $250,000</option>
-                                        <option value="250k+">$250,000+</option>
-                                    </select>
+                                    <input type="text" id="furnishing-budget" name="furnishing_budget" placeholder="e.g. $5,000 - $10,000" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                 </div>
                                 
                                 <div>
                                     <label for="build-budget" class="block text-olive mb-2 uppercase tracking-wider text-xs">Estimated Build Budget</label>
-                                    <select id="build-budget" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
-                                        <option value="">Please select</option>
-                                        <option value="50-100k">$50,000 - $100,000</option>
-                                        <option value="100-250k">$100,000 - $250,000</option>
-                                        <option value="250-500k">$250,000 - $500,000</option>
-                                        <option value="500k+">$500,000+</option>
-                                    </select>
+                                    <input type="text" id="build-budget" name="build_budget" placeholder="e.g. $15,000 - $25,000" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                 </div>
                                 
                                 <div>
                                     <label for="square-footage" class="block text-olive mb-2 uppercase tracking-wider text-xs">Approximate Square Footage</label>
-                                    <input type="text" id="square-footage" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                    <input type="text" id="square-footage" name="square_footage" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                 </div>
                                 
                                 <div>
                                     <label for="start-date" class="block text-olive mb-2 uppercase tracking-wider text-xs">Ideal Start Date</label>
-                                    <input type="text" id="start-date" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                    <input type="text" id="start-date" name="start_date" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                 </div>
                             </div>
                         </div>
@@ -175,7 +163,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                                 <div>
                                     <label for="worked-with-designer" class="block text-olive mb-2 uppercase tracking-wider text-xs">Have you worked with an interior designer before?</label>
-                                    <select id="worked-with-designer" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                    <select id="worked-with-designer" name="worked_with_designer" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                         <option value="">Please select</option>
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
@@ -184,7 +172,7 @@
                                 
                                 <div>
                                     <label for="working-with-architect" class="block text-olive mb-2 uppercase tracking-wider text-xs">Are you working with an architect or contractor?</label>
-                                    <select id="working-with-architect" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                    <select id="working-with-architect" name="working_with_architect" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                         <option value="">Please select</option>
                                         <option value="architect">Architect</option>
                                         <option value="contractor">Contractor</option>
@@ -195,7 +183,7 @@
                                 
                                 <div class="md:col-span-2">
                                     <label for="referral" class="block text-olive mb-2 uppercase tracking-wider text-xs">How did you learn about JMC Studio?</label>
-                                    <input type="text" id="referral" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
+                                    <input type="text" id="referral" name="referral_source" class="w-full px-4 py-3 border-b border-olive bg-transparent focus:outline-none focus:border-sage transition-colors duration-300">
                                 </div>
                             </div>
                         </div>
@@ -205,9 +193,18 @@
                             <h3 class="font-serif text-xl mb-6 pb-2 border-b border-sage border-opacity-30">Project Scope</h3>
                             <div>
                                 <label for="scope" class="block text-olive mb-2 uppercase tracking-wider text-xs">Please describe your project</label>
-                                <textarea id="scope" rows="5" class="w-full px-4 py-3 border border-olive bg-transparent rounded-sm focus:outline-none focus:border-sage transition-colors duration-300"></textarea>
+                                <textarea id="scope" name="project_scope" rows="5" class="w-full px-4 py-3 border border-olive bg-transparent rounded-sm focus:outline-none focus:border-sage transition-colors duration-300"></textarea>
                             </div>
                         </div>
+                        
+                        <!-- Hidden field for form subject -->
+                        <input type="hidden" name="_subject" value="New JMC Studio Inquiry">
+                        
+                        <!-- Redirect after submission -->
+                        <input type="hidden" name="_next" value="https://jmcstudio.com/thank-you">
+                        
+                        <!-- Honeypot field to prevent spam -->
+                        <input type="text" name="_gotcha" style="display:none">
                         
                         <!-- Submit Button -->
                         <div class="text-center pt-4">
@@ -287,18 +284,27 @@
             });
         });
     
-        // Simple form submission
+        // Form submission handling
+        // You don't need custom form handling for Formspree
+        // The redirect will happen automatically after submission
+        // This code only handles the display of the local thank you message if needed
         document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+            // If you want to show the thank you message instead of redirecting,
+            // uncomment these lines and change the _next parameter in the form:
+            /*
             e.preventDefault();
-            // Here you would typically send the form data to your server
-            // For now, just show the thank you message
             document.getElementById('inquiry-form').parentElement.classList.add('hidden');
             document.getElementById('thank-you').classList.remove('hidden');
             
-            // Scroll to thank you message
             document.getElementById('thank-you').scrollIntoView({
                 behavior: 'smooth'
             });
+            
+            // After showing the message, you can submit the form programmatically
+            setTimeout(function() {
+                e.target.submit();
+            }, 2000);
+            */
         });
     </script>
 </body>
